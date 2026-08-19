@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AptiAce - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <h1>AptiAce</h1>
+
+        <button onclick="logout()">
+            Logout
+        </button>
+
+    </nav>
+
+
+    <main class="dashboard">
+
+        <h1>Welcome to AptiAce 👋</h1>
+
+        <p id="userEmail"></p>
+
+        <div class="dashboard-grid">
+
+            <div class="category-card">
+                <h2>Quantitative Aptitude</h2>
+                <p>
+                    Numbers, percentages, time & work,
+                    probability and more.
+                </p>
+                <button onclick="window.location.href='quantitative.html'">
+    Start Practice
+</button>
+            </div>
+
+
+            <div class="category-card">
+                <h2>Logical Reasoning</h2>
+                <p>
+                    Practice logical reasoning questions
+                    commonly asked in interviews.
+                </p>
+                <button>Start Practice</button>
+            </div>
+
+
+            <div class="category-card">
+                <h2>Verbal Ability</h2>
+                <p>
+                    Improve grammar, vocabulary and
+                    reading comprehension.
+                </p>
+                <button>Start Practice</button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

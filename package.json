@@ -1,0 +1,27 @@
+{
+  "name": "aptiace",
+  "version": "1.0.0",
+  "description": "Aptitude practice website for students",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "aptitude",
+    "interview",
+    "practice",
+    "students"
+  ],
+  "author": "AptiAce",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "sqlite3": "^6.0.1"
+  },
+  "allowScripts": {
+    "bcrypt@6.0.0": true,
+    "sqlite3@6.0.1": true
+  }
+}

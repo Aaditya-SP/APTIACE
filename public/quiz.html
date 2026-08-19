@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AptiAce Quiz</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f8fafc
+                );
+
+            min-height: 100vh;
+
+            padding: 30px;
+
+        }
+
+        .quiz-container {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,0.08);
+
+        }
+
+        /* HEADER */
+
+        .quiz-header {
+
+            margin-bottom: 25px;
+
+        }
+
+        .quiz-title {
+
+            font-size: 32px;
+
+            margin-bottom: 15px;
+
+            color: #1e293b;
+
+        }
+
+        .quiz-info {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+
+            color: #64748b;
+
+            font-size: 15px;
+
+        }
+
+        .difficulty {
+
+            padding: 6px 14px;
+
+            border-radius: 20px;
+
+            font-weight: bold;
+
+            font-size: 12px;
+
+        }
+
+        .easy {
+
+            background: #dcfce7;
+
+            color: #166534;
+
+        }
+
+        .medium {
+
+            background: #fef3c7;
+
+            color: #92400e;
+
+        }
+
+        .hard {
+
+            background: #fee2e2;
+
+            color: #991b1b;
+
+        }
+
+        /* PROGRESS */
+
+        .progress-container {
+
+            width: 100%;
+
+            height: 8px;
+
+            background: #e2e8f0;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+        }
+
+        .progress-bar {
+
+            height: 100%;
+
+            width: 0%;
+
+            background: #4f46e5;
+
+            transition: width 0.3s ease;
+
+        }
+
+        /* QUESTION */
+
+        .question-card {
+
+            margin-top: 25px;
+
+        }
+
+        .question {
+
+            font-size: 24px;
+
+            line-height: 1.5;
+
+            color: #1e293b;
+
+            margin: 20px 0;
+
+        }
+
+        /* OPTIONS */
+
+        .options {
+
+            display: grid;
+
+            gap: 15px;
+
+        }
+
+        .option {
+
+            padding: 18px;
+
+            border: 2px solid #e2e8f0;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            font-size: 17px;
+
+            background: white;
+
+        }
+
+        .option:hover {
+
+            border-color: #6366f1;
+
+            background: #f8faff;
+
+        }
+
+        .option.selected {
+
+            border-color: #4f46e5;
+
+            background: #eef2ff;
+
+        }
+
+        .option.correct {
+
+            border-color: #16a34a;
+
+            background: #dcfce7;
+
+        }
+
+        .option.wrong {
+
+            border-color: #dc2626;
+
+            background: #fee2e2;
+
+        }
+
+        /* FEEDBACK */
+
+        .feedback {
+
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+        }
+
+        .feedback.correct-feedback {
+
+            display: block;
+
+            background: #f0fdf4;
+
+            border-left: 5px solid #16a34a;
+
+        }
+
+        .feedback.wrong-feedback {
+
+            display: block;
+
+            background: #fef2f2;
+
+            border-left: 5px solid #dc2626;
+
+        }
+
+        .feedback-title {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+        }
+
+        .feedback-text {
+
+            line-height: 1.6;
+
+            color: #334155;
+
+        }
+
+        /* BUTTON */
+
+        .button-container {
+
+            margin-top: 25px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+        #selectionMessage {
+
+            color: #64748b;
+
+        }
+
+        .submit-btn {
+
+            border: none;
+
+            background: #4f46e5;
+
+            color: white;
+
+            padding: 13px 25px;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+        }
+
+        .submit-btn:hover {
+
+            background: #4338ca;
+
+        }
+
+        .submit-btn:disabled {
+
+            background: #cbd5e1;
+
+            cursor: not-allowed;
+
+        }
+
+        /* RESULT */
+
+        .result {
+
+            display: none;
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+        }
+
+        .result h2 {
+
+            font-size: 36px;
+
+            margin-bottom: 20px;
+
+            color: #1e293b;
+
+        }
+
+        .score {
+
+            font-size: 55px;
+
+            font-weight: bold;
+
+            color: #4f46e5;
+
+            margin: 20px;
+
+        }
+
+        .restart-btn {
+
+            margin-top: 20px;
+
+            padding: 14px 25px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #4f46e5;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .quiz-container {
+                padding: 20px;
+            }
+
+            .question {
+                font-size: 20px;
+            }
+
+            .button-container {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="quiz-container">
+
+
+    <!-- QUIZ -->
+
+    <div id="quizSection">
+
+
+        <!-- HEADER -->
+
+        <div class="quiz-header">
+
+            <h1
+                id="quizTitle"
+                class="quiz-title">
+                Loading Quiz...
+            </h1>
+
+
+            <div class="quiz-info">
+
+                <span id="questionNumber">
+                    Question 0 of 0
+                </span>
+
+
+                <span
+                    id="difficultyBadge"
+                    class="difficulty easy">
+                    EASY
+                </span>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION -->
+
+        <div class="question-card">
+
+
+            <div
+                id="questionText"
+                class="question">
+
+                Loading question...
+
+            </div>
+
+
+            <!-- OPTIONS -->
+
+            <div
+                id="options"
+                class="options">
+            </div>
+
+
+            <!-- FEEDBACK -->
+
+            <div
+                id="feedback"
+                class="feedback">
+
+                <div
+                    id="feedbackTitle"
+                    class="feedback-title">
+                </div>
+
+
+                <div
+                    id="feedbackText"
+                    class="feedback-text">
+                </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <div class="button-container">
+
+                <span id="selectionMessage">
+                    Select an answer
+                </span>
+
+
+                <button
+                    id="submitButton"
+                    class="submit-btn"
+                    disabled>
+
+                    Submit Answer
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div
+        id="resultSection"
+        class="result">
+
+        <h2>
+            Quiz Completed!
+        </h2>
+
+        <p>
+            Your Score
+        </p>
+
+        <div
+            id="finalScore"
+            class="score">
+            0 / 0
+        </div>
+
+        <p id="resultMessage"></p>
+
+        <button
+            class="restart-btn"
+            onclick="restartQuiz()">
+
+            Try Again
+
+        </button>
+
+    </div>
+
+
+</div>
+
+
+<script src="js/quiz.js"></script>
+
+</body>
+
+</html>

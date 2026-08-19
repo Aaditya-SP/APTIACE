@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AptiAce - Percentages</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: white;
+            padding: 20px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: #4f46e5;
+            color: white;
+
+            border: none;
+
+            padding: 12px 20px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        /* MAIN */
+
+        .container {
+            max-width: 1000px;
+
+            margin: 40px auto;
+
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+
+            font-size: 40px;
+
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #666;
+
+            font-size: 18px;
+
+            margin-bottom: 35px;
+        }
+
+        /* FORMULA CARD */
+
+        .formula-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .formula-card h2 {
+
+            margin-top: 0;
+
+            color: #4f46e5;
+        }
+
+        .formula {
+
+            background: #f5f5ff;
+
+            padding: 15px;
+
+            margin: 12px 0;
+
+            border-left:
+                4px solid #4f46e5;
+
+            border-radius: 5px;
+
+            font-size: 17px;
+        }
+
+        .example {
+
+            background: #f8fafc;
+
+            padding: 15px;
+
+            margin-top: 10px;
+
+            border-radius: 8px;
+
+            color: #555;
+        }
+
+        /* TOPICS */
+
+        .difficulty {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 15px;
+
+            margin-top: 20px;
+        }
+
+        .difficulty-box {
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            background: #f8fafc;
+
+            border:
+                1px solid #e5e7eb;
+        }
+
+        .difficulty-box h3 {
+
+            margin-top: 0;
+
+        }
+
+        /* START BUTTON */
+
+        .start-container {
+
+            text-align: center;
+
+            margin: 40px 0;
+        }
+
+        .start-btn {
+
+            background: #4f46e5;
+
+            color: white;
+
+            border: none;
+
+            padding: 16px 35px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+        .start-btn:hover {
+
+            background: #3730a3;
+
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 700px) {
+
+            .difficulty {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+            .header {
+
+                padding:
+                    15px 20px;
+
+            }
+
+            .logo {
+
+                font-size: 25px;
+
+            }
+
+            .title {
+
+                font-size: 32px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+        AptiAce
+    </div>
+
+
+    <button
+        class="back-btn"
+        onclick="window.location.href='quantitative.html'">
+
+        ← Topics
+
+    </button>
+
+</header>
+
+
+<!-- MAIN CONTENT -->
+
+<main class="container">
+
+
+    <h1 class="title">
+        Percentages
+    </h1>
+
+
+    <p class="subtitle">
+
+        Learn the important formulas
+        before starting your practice.
+
+    </p>
+
+
+    <!-- BASIC FORMULAS -->
+
+    <div class="formula-card">
+
+        <h2>
+            1. Basic Percentage
+        </h2>
+
+
+        <div class="formula">
+
+            Percentage =
+            (Part ÷ Whole) × 100
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            What percentage is 20 of 100?
+
+            <br><br>
+
+            (20 ÷ 100) × 100 =
+
+            <strong>20%</strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- PERCENTAGE OF A NUMBER -->
+
+    <div class="formula-card">
+
+        <h2>
+            2. Percentage of a Number
+        </h2>
+
+
+        <div class="formula">
+
+            X% of Y =
+            (X ÷ 100) × Y
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            Find 25% of 200.
+
+            <br><br>
+
+            (25 ÷ 100) × 200
+
+            =
+
+            <strong>50</strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- PERCENTAGE INCREASE -->
+
+    <div class="formula-card">
+
+        <h2>
+            3. Percentage Increase
+        </h2>
+
+
+        <div class="formula">
+
+            Percentage Increase =
+
+            (Increase ÷ Original Value) × 100
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            A price increases from ₹100
+            to ₹120.
+
+            <br><br>
+
+            Increase = 20
+
+            <br>
+
+            Percentage Increase =
+
+            (20 ÷ 100) × 100
+
+            =
+
+            <strong>20%</strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- PERCENTAGE DECREASE -->
+
+    <div class="formula-card">
+
+        <h2>
+            4. Percentage Decrease
+        </h2>
+
+
+        <div class="formula">
+
+            Percentage Decrease =
+
+            (Decrease ÷ Original Value) × 100
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            A price decreases from ₹200
+            to ₹150.
+
+            <br><br>
+
+            Decrease = 50
+
+            <br>
+
+            Percentage Decrease =
+
+            (50 ÷ 200) × 100
+
+            =
+
+            <strong>25%</strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUCCESSIVE PERCENTAGE -->
+
+    <div class="formula-card">
+
+        <h2>
+            5. Successive Percentage Change
+        </h2>
+
+
+        <div class="formula">
+
+            Net Change =
+
+            a + b + (ab ÷ 100)
+
+        </div>
+
+
+        <p>
+
+            Use positive values for increases
+            and negative values for decreases.
+
+        </p>
+
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            A number increases by 20%
+            and then by 10%.
+
+            <br><br>
+
+            Net change =
+
+            20 + 10 + (20 × 10 ÷ 100)
+
+            <br><br>
+
+            = 30 + 2
+
+            =
+
+            <strong>32%</strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- DIFFICULTY -->
+
+    <div class="formula-card">
+
+        <h2>
+            Practice Structure
+        </h2>
+
+
+        <p>
+
+            You will get 25 questions.
+            The difficulty increases after
+            every 5 questions.
+
+        </p>
+
+
+        <div class="difficulty">
+
+
+            <div class="difficulty-box">
+
+                <h3>🟢 Easy</h3>
+
+                <p>
+                    Questions 1–5
+                </p>
+
+            </div>
+
+
+            <div class="difficulty-box">
+
+                <h3>🟡 Medium</h3>
+
+                <p>
+                    Questions 6–10
+                </p>
+
+            </div>
+
+
+            <div class="difficulty-box">
+
+                <h3>🟠 Hard</h3>
+
+                <p>
+                    Questions 11–15
+                </p>
+
+            </div>
+
+
+            <div class="difficulty-box">
+
+                <h3>🔴 Advanced</h3>
+
+                <p>
+                    Questions 16–20
+                </p>
+
+            </div>
+
+
+            <div class="difficulty-box">
+
+                <h3>🔥 Interview</h3>
+
+                <p>
+                    Questions 21–25
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- START -->
+
+    <div class="start-container">
+
+        <button
+            class="start-btn"
+            onclick="window.location.href='percentage-quiz.html'">
+
+            Start 25 Question Practice →
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AptiAce - Percentage Practice</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+
+            background: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.08);
+        }
+
+
+        .logo {
+
+            font-size: 30px;
+
+            font-weight: bold;
+        }
+
+
+        .back-btn {
+
+            background: #4f46e5;
+
+            color: white;
+
+            border: none;
+
+            padding: 10px 18px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+
+            max-width: 900px;
+
+            margin: 40px auto;
+
+            padding: 0 20px;
+        }
+
+
+        /* =========================
+           QUIZ HEADER
+        ========================= */
+
+        .quiz-header {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.08);
+
+            margin-bottom: 20px;
+        }
+
+
+        .quiz-title {
+
+            margin: 0;
+
+            font-size: 28px;
+        }
+
+
+        .quiz-info {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 15px;
+
+            color: #666;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           PROGRESS BAR
+        ========================= */
+
+        .progress-container {
+
+            width: 100%;
+
+            height: 10px;
+
+            background: #e5e7eb;
+
+            border-radius: 10px;
+
+            margin-top: 20px;
+
+            overflow: hidden;
+        }
+
+
+        .progress-bar {
+
+            height: 100%;
+
+            width: 4%;
+
+            background: #4f46e5;
+
+            transition: width 0.3s;
+        }
+
+
+        /* =========================
+           QUESTION CARD
+        ========================= */
+
+        .question-card {
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.08);
+        }
+
+
+        .difficulty {
+
+            display: inline-block;
+
+            padding: 7px 14px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+
+        .easy {
+
+            background: #dcfce7;
+
+            color: #166534;
+        }
+
+
+        .medium {
+
+            background: #fef9c3;
+
+            color: #854d0e;
+        }
+
+
+        .hard {
+
+            background: #fed7aa;
+
+            color: #9a3412;
+        }
+
+
+        .advanced {
+
+            background: #fee2e2;
+
+            color: #991b1b;
+        }
+
+
+        .interview {
+
+            background: #ede9fe;
+
+            color: #5b21b6;
+        }
+
+
+        .question {
+
+            font-size: 23px;
+
+            line-height: 1.5;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           OPTIONS
+        ========================= */
+
+        .options {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 13px;
+        }
+
+
+        .option {
+
+            border: 2px solid #e5e7eb;
+
+            background: white;
+
+            padding: 16px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 17px;
+
+            transition: 0.2s;
+        }
+
+
+        .option:hover {
+
+            border-color: #4f46e5;
+
+            background: #f5f3ff;
+        }
+
+
+        .option.selected {
+
+            border-color: #4f46e5;
+
+            background: #eef2ff;
+        }
+
+
+        .option.correct {
+
+            border-color: #16a34a;
+
+            background: #dcfce7;
+        }
+
+
+        .option.wrong {
+
+            border-color: #dc2626;
+
+            background: #fee2e2;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .button-container {
+
+            margin-top: 30px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .submit-btn {
+
+            background: #4f46e5;
+
+            color: white;
+
+            border: none;
+
+            padding: 14px 28px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            font-weight: bold;
+        }
+
+
+        .submit-btn:hover {
+
+            background: #3730a3;
+        }
+
+
+        .submit-btn:disabled {
+
+            background: #a5b4fc;
+
+            cursor: not-allowed;
+        }
+
+
+        /* =========================
+           FEEDBACK
+        ========================= */
+
+        .feedback {
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            display: none;
+
+            line-height: 1.6;
+        }
+
+
+        .feedback.correct-feedback {
+
+            display: block;
+
+            background: #dcfce7;
+
+            border-left: 5px solid #16a34a;
+        }
+
+
+        .feedback.wrong-feedback {
+
+            display: block;
+
+            background: #fee2e2;
+
+            border-left: 5px solid #dc2626;
+        }
+
+
+        .feedback-title {
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           RESULT PAGE
+        ========================= */
+
+        .result {
+
+            display: none;
+
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.08);
+
+            text-align: center;
+        }
+
+
+        .result h1 {
+
+            font-size: 35px;
+        }
+
+
+        .score {
+
+            font-size: 55px;
+
+            font-weight: bold;
+
+            color: #4f46e5;
+
+            margin: 20px;
+        }
+
+
+        .percentage-score {
+
+            font-size: 22px;
+
+            color: #666;
+        }
+
+
+        /* =========================
+           SCORE TABLE
+        ========================= */
+
+        .score-table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin-top: 30px;
+        }
+
+
+        .score-table th,
+        .score-table td {
+
+            padding: 14px;
+
+            border-bottom:
+                1px solid #e5e7eb;
+        }
+
+
+        .score-table th {
+
+            background: #f8fafc;
+        }
+
+
+        /* =========================
+           RESULT BUTTONS
+        ========================= */
+
+        .result-buttons {
+
+            margin-top: 30px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .result-btn {
+
+            border: none;
+
+            padding: 13px 22px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        .restart {
+
+            background: #4f46e5;
+
+            color: white;
+        }
+
+
+        .topics {
+
+            background: #e5e7eb;
+
+            color: #222;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width: 650px) {
+
+            .header {
+
+                padding: 15px 20px;
+            }
+
+            .logo {
+
+                font-size: 24px;
+            }
+
+            .container {
+
+                margin: 20px auto;
+            }
+
+            .question-card {
+
+                padding: 22px;
+            }
+
+            .question {
+
+                font-size: 19px;
+            }
+
+            .quiz-info {
+
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="logo">
+        AptiAce
+    </div>
+
+
+    <button
+        class="back-btn"
+        onclick="window.location.href='percentage.html'">
+
+        ← Formulas
+
+    </button>
+
+</header>
+
+
+
+<!-- =========================
+     QUIZ CONTAINER
+========================= -->
+
+<main class="container">
+
+
+    <!-- QUIZ -->
+
+    <section id="quiz">
+
+
+        <!-- QUIZ HEADER -->
+
+        <div class="quiz-header">
+
+            <h1 class="quiz-title">
+                Percentage Practice
+            </h1>
+
+
+            <div class="quiz-info">
+
+                <span id="questionNumber">
+                    Question 1 of 25
+                </span>
+
+                <span id="difficultyText">
+                    Easy
+                </span>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION -->
+
+        <div class="question-card">
+
+
+            <div
+                id="difficultyBadge"
+                class="difficulty easy">
+
+                EASY
+
+            </div>
+
+
+            <div
+                id="questionText"
+                class="question">
+
+                Loading question...
+
+            </div>
+
+
+            <!-- OPTIONS -->
+
+            <div
+                id="options"
+                class="options">
+            </div>
+
+
+            <!-- FEEDBACK -->
+
+            <div
+                id="feedback"
+                class="feedback">
+
+                <div
+                    id="feedbackTitle"
+                    class="feedback-title">
+                </div>
+
+
+                <div
+                    id="feedbackText">
+                </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <div class="button-container">
+
+                <span id="selectionMessage">
+                    Select an answer
+                </span>
+
+
+                <button
+                    id="submitButton"
+                    class="submit-btn"
+                    disabled>
+
+                    Submit Answer
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         RESULT
+    ========================= -->
+
+    <section
+        id="result"
+        class="result">
+
+
+        <h1>
+            Test Complete!
+        </h1>
+
+
+        <div
+            id="finalScore"
+            class="score">
+
+            0 / 25
+
+        </div>
+
+
+        <div
+            id="percentageScore"
+            class="percentage-score">
+
+            0%
+
+        </div>
+
+
+        <p id="resultMessage">
+        </p>
+
+
+        <table class="score-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Difficulty
+                    </th>
+
+                    <th>
+                        Score
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        🟢 Easy
+                    </td>
+
+                    <td id="easyScore">
+                        0 / 5
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        🟡 Medium
+                    </td>
+
+                    <td id="mediumScore">
+                        0 / 5
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        🟠 Hard
+                    </td>
+
+                    <td id="hardScore">
+                        0 / 5
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        🔴 Advanced
+                    </td>
+
+                    <td id="advancedScore">
+                        0 / 5
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        🔥 Interview
+                    </td>
+
+                    <td id="interviewScore">
+                        0 / 5
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+        <div class="result-buttons">
+
+            <button
+                class="result-btn restart"
+                onclick="restartQuiz()">
+
+                Try Again
+
+            </button>
+
+
+            <button
+                class="result-btn topics"
+                onclick="window.location.href='quantitative.html'">
+
+                Back to Topics
+
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+
+/* =====================================================
+   QUESTION DATABASE
+===================================================== */
+
+
+const questions = [
+
+
+    /* =========================
+       EASY — 1 to 5
+    ========================= */
+
+
+    {
+        question:
+        "What is 20% of 250?",
+
+        options:
+        ["40", "50", "60", "75"],
+
+        answer:
+        1,
+
+        difficulty:
+        "easy",
+
+        explanation:
+        "20% of 250 = (20 ÷ 100) × 250 = 50."
+    },
+
+
+    {
+        question:
+        "What is 15% of 200?",
+
+        options:
+        ["20", "25", "30", "35"],
+
+        answer:
+        2,
+
+        difficulty:
+        "easy",
+
+        explanation:
+        "15% of 200 = (15 ÷ 100) × 200 = 30."
+    },
+
+
+    {
+        question:
+        "40 is what percentage of 160?",
+
+        options:
+        ["20%", "25%", "30%", "40%"],
+
+        answer:
+        1,
+
+        difficulty:
+        "easy",
+
+        explanation:
+        "(40 ÷ 160) × 100 = 25%."
+    },
+
+
+    {
+        question:
+        "What is 25% of 360?",
+
+        options:
+        ["80", "90", "100", "120"],
+
+        answer:
+        1,
+
+        difficulty:
+        "easy",
+
+        explanation:
+        "25% of 360 = (25 ÷ 100) × 360 = 90."
+    },
+
+
+    {
+        question:
+        "What is 12.5% of 80?",
+
+        options:
+        ["8", "10", "12", "15"],
+
+        answer:
+        1,
+
+        difficulty:
+        "easy",
+
+        explanation:
+        "12.5% = 1/8. Therefore, 80 ÷ 8 = 10."
+    },
+
+
+    /* =========================
+       MEDIUM — 6 to 10
+    ========================= */
+
+
+    {
+        question:
+        "72 is 30% of which number?",
+
+        options:
+        ["180", "220", "240", "260"],
+
+        answer:
+        2,
+
+        difficulty:
+        "medium",
+
+        explanation:
+        "30% of x = 72. Therefore x = 72 × 100 ÷ 30 = 240."
+    },
+
+
+    {
+        question:
+        "A person's salary is ₹20,000. If it increases by 10%, what is the new salary?",
+
+        options:
+        ["₹21,000", "₹22,000", "₹23,000", "₹24,000"],
+
+        answer:
+        1,
+
+        difficulty:
+        "medium",
+
+        explanation:
+        "Increase = 10% of ₹20,000 = ₹2,000. New salary = ₹22,000."
+    },
+
+
+    {
+        question:
+        "A product costs ₹500. Its price is reduced by 20%. What is the new price?",
+
+        options:
+        ["₹350", "₹375", "₹400", "₹425"],
+
+        answer:
+        2,
+
+        difficulty:
+        "medium",
+
+        explanation:
+        "Decrease = 20% of ₹500 = ₹100. New price = ₹500 − ₹100 = ₹400."
+    },
+
+
+    {
+        question:
+        "30% of a number is 54. What is the number?",
+
+        options:
+        ["150", "160", "180", "200"],
+
+        answer:
+        2,
+
+        difficulty:
+        "medium",
+
+        explanation:
+        "0.30 × x = 54. Therefore x = 54 ÷ 0.30 = 180."
+    },
+
+
+    {
+        question:
+        "45 is 15% of which number?",
+
+        options:
+        ["250", "300", "350", "400"],
+
+        answer:
+        1,
+
+        difficulty:
+        "medium",
+
+        explanation:
+        "15% of x = 45. Therefore x = 45 × 100 ÷ 15 = 300."
+    },
+
+
+    /* =========================
+       HARD — 11 to 15
+    ========================= */
+
+
+    {
+        question:
+        "A city's population is 8,000. It increases by 15%. What is the new population?",
+
+        options:
+        ["8,800", "9,000", "9,200", "9,400"],
+
+        answer:
+        2,
+
+        difficulty:
+        "hard",
+
+        explanation:
+        "15% of 8,000 = 1,200. New population = 8,000 + 1,200 = 9,200."
+    },
+
+
+    {
+        question:
+        "An item costs ₹1,200. A discount of 25% is given. What is the selling price?",
+
+        options:
+        ["₹850", "₹900", "₹950", "₹1,000"],
+
+        answer:
+        1,
+
+        difficulty:
+        "hard",
+
+        explanation:
+        "Discount = 25% of ₹1,200 = ₹300. Selling price = ₹1,200 − ₹300 = ₹900."
+    },
+
+
+    {
+        question:
+        "A number is increased by 20% and becomes 360. What was the original number?",
+
+        options:
+        ["280", "300", "320", "340"],
+
+        answer:
+        1,
+
+        difficulty:
+        "hard",
+
+        explanation:
+        "After a 20% increase, the number becomes 120% of the original. Original = 360 ÷ 1.20 = 300."
+    },
+
+
+    {
+        question:
+        "A number is decreased by 20% and becomes 480. What was the original number?",
+
+        options:
+        ["560", "580", "600", "620"],
+
+        answer:
+        2,
+
+        difficulty:
+        "hard",
+
+        explanation:
+        "After a 20% decrease, the number is 80% of the original. Original = 480 ÷ 0.80 = 600."
+    },
+
+
+    {
+        question:
+        "A person's annual income is ₹40,000. If 25% is spent on food, how much is spent on food?",
+
+        options:
+        ["₹8,000", "₹9,000", "₹10,000", "₹12,000"],
+
+        answer:
+        2,
+
+        difficulty:
+        "hard",
+
+        explanation:
+        "25% of ₹40,000 = ₹10,000."
+    },
+
+
+    /* =========================
+       ADVANCED — 16 to 20
+    ========================= */
+
+
+    {
+        question:
+        "A number is increased by 20% and then increased by another 10%. What is the total percentage increase?",
+
+        options:
+        ["28%", "30%", "32%", "34%"],
+
+        answer:
+        2,
+
+        difficulty:
+        "advanced",
+
+        explanation:
+        "Successive increase = 20 + 10 + (20 × 10 ÷ 100) = 32%."
+    },
+
+
+    {
+        question:
+        "A price is increased by 25% and then decreased by 20%. What is the net percentage change?",
+
+        options:
+        ["No change", "5% increase", "5% decrease", "10% decrease"],
+
+        answer:
+        0,
+
+        difficulty:
+        "advanced",
+
+        explanation:
+        "Take the original price as 100. After 25% increase it becomes 125. A 20% decrease gives 125 × 0.80 = 100. Therefore there is no net change."
+    },
+
+
+    {
+        question:
+        "A product's price is increased by 20% and then discounted by 20%. If the final price is ₹960, what was the original price?",
+
+        options:
+        ["₹960", "₹980", "₹1,000", "₹1,020"],
+
+        answer:
+        2,
+
+        difficulty:
+        "advanced",
+
+        explanation:
+        "Final price = Original × 1.20 × 0.80 = Original × 0.96. Therefore Original = ₹960 ÷ 0.96 = ₹1,000."
+    },
+
+
+    {
+        question:
+        "A is 30% more than B. B is what percentage less than A?",
+
+        options:
+        ["20%", "23 1/13%", "25%", "30%"],
+
+        answer:
+        1,
+
+        difficulty:
+        "advanced",
+
+        explanation:
+        "Let B = 100. Then A = 130. Difference = 30. Percentage less than A = 30 ÷ 130 × 100 = 23 1/13%."
+    },
+
+
+    {
+        question:
+        "40% of x is equal to 25% of 320. Find x.",
+
+        options:
+        ["160", "180", "200", "220"],
+
+        answer:
+        2,
+
+        difficulty:
+        "advanced",
+
+        explanation:
+        "25% of 320 = 80. Therefore 40% of x = 80, so x = 80 ÷ 0.40 = 200."
+    },
+
+
+    /* =========================
+       INTERVIEW — 21 to 25
+    ========================= */
+
+
+    {
+        question:
+        "An item is marked 25% above its cost price and then sold at a 10% discount on the marked price. What is the profit percentage?",
+
+        options:
+        ["10%", "12.5%", "15%", "17.5%"],
+
+        answer:
+        1,
+
+        difficulty:
+        "interview",
+
+        explanation:
+        "Let cost price = 100. Marked price = 125. After 10% discount, selling price = 125 × 0.90 = 112.5. Profit = 12.5%."
+    },
+
+
+    {
+        question:
+        "A population decreases by 10% and then increases by 20%. What is the net percentage change?",
+
+        options:
+        ["8% increase", "10% increase", "10% decrease", "12% increase"],
+
+        answer:
+        0,
+
+        difficulty:
+        "interview",
+
+        explanation:
+        "Take population as 100. After 10% decrease it becomes 90. Increasing 90 by 20% gives 108. Therefore the net increase is 8%."
+    },
+
+
+    {
+        question:
+        "A number is increased by x% and then decreased by x%. The final result is 9% less than the original. Find x.",
+
+        options:
+        ["20%", "25%", "30%", "40%"],
+
+        answer:
+        2,
+
+        difficulty:
+        "interview",
+
+        explanation:
+        "The net decrease for equal successive increase and decrease is x²/100 percent. Thus x²/100 = 9, giving x = 30%."
+    },
+
+
+    {
+        question:
+        "A person's income is ₹50,000 and expenditure is ₹40,000. Income increases by 20% while expenditure increases by 10%. By what percentage does the saving increase?",
+
+        options:
+        ["40%", "50%", "60%", "70%"],
+
+        answer:
+        2,
+
+        difficulty:
+        "interview",
+
+        explanation:
+        "Original saving = ₹50,000 − ₹40,000 = ₹10,000. New income = ₹60,000 and new expenditure = ₹44,000. New saving = ₹16,000. Increase = ₹6,000, which is 60% of ₹10,000."
+    },
+
+
+    {
+        question:
+        "An item is sold at a 20% profit after giving a 10% discount on its marked price. If the marked price is ₹1,320, what is the cost price?",
+
+        options:
+        ["₹900", "₹990", "₹1,000", "₹1,100"],
+
+        answer:
+        1,
+
+        difficulty:
+        "interview",
+
+        explanation:
+        "Selling price = ₹1,320 × 0.90 = ₹1,188. At 20% profit, selling price = 120% of cost price. Cost price = ₹1,188 ÷ 1.20 = ₹990."
+    }
+
+];
+
+
+
+/* =====================================================
+   QUIZ VARIABLES
+===================================================== */
+
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let selectedAnswer = null;
+
+let answerSubmitted = false;
+
+
+let difficultyScores = {
+
+    easy: 0,
+
+    medium: 0,
+
+    hard: 0,
+
+    advanced: 0,
+
+    interview: 0
+
+};
+
+
+
+/* =====================================================
+   HTML ELEMENTS
+===================================================== */
+
+
+const questionText =
+    document.getElementById("questionText");
+
+
+const optionsContainer =
+    document.getElementById("options");
+
+
+const submitButton =
+    document.getElementById("submitButton");
+
+
+const feedback =
+    document.getElementById("feedback");
+
+
+const feedbackTitle =
+    document.getElementById("feedbackTitle");
+
+
+const feedbackText =
+    document.getElementById("feedbackText");
+
+
+const questionNumber =
+    document.getElementById("questionNumber");
+
+
+const difficultyText =
+    document.getElementById("difficultyText");
+
+
+const difficultyBadge =
+    document.getElementById("difficultyBadge");
+
+
+const progressBar =
+    document.getElementById("progressBar");
+
+
+const selectionMessage =
+    document.getElementById("selectionMessage");
+
+
+
+/* =====================================================
+   GET DIFFICULTY NAME
+===================================================== */
+
+
+function getDifficultyName(difficulty) {
+
+    const names = {
+
+        easy: "Easy",
+
+        medium: "Medium",
+
+        hard: "Hard",
+
+        advanced: "Advanced",
+
+        interview: "Interview Level"
+
+    };
+
+    return names[difficulty];
+
+}
+
+
+
+/* =====================================================
+   LOAD QUESTION
+===================================================== */
+
+
+function loadQuestion() {
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    selectedAnswer = null;
+
+    answerSubmitted = false;
+
+
+    /* Question number */
+
+    questionNumber.textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+
+    /* Difficulty */
+
+    difficultyText.textContent =
+        getDifficultyName(q.difficulty);
+
+
+    difficultyBadge.textContent =
+        getDifficultyName(q.difficulty).toUpperCase();
+
+
+    difficultyBadge.className =
+        `difficulty ${q.difficulty}`;
+
+
+    /* Question */
+
+    questionText.textContent =
+        q.question;
+
+
+    /* Progress */
+
+    const progress =
+        ((currentQuestion + 1) / questions.length) * 100;
+
+    progressBar.style.width =
+        `${progress}%`;
+
+
+    /* Remove old options */
+
+    optionsContainer.innerHTML = "";
+
+
+    /* Create options */
+
+    q.options.forEach((option, index) => {
+
+
+        const optionElement =
+            document.createElement("div");
+
+
+        optionElement.className =
+            "option";
+
+
+        optionElement.textContent =
+            `${String.fromCharCode(65 + index)}. ${option}`;
+
+
+        optionElement.addEventListener(
+            "click",
+            () => selectOption(index)
+        );
+
+
+        optionsContainer.appendChild(
+            optionElement
+        );
+
+    });
+
+
+    /* Reset feedback */
+
+    feedback.className =
+        "feedback";
+
+
+    feedbackTitle.textContent =
+        "";
+
+
+    feedbackText.textContent =
+        "";
+
+
+    /* Reset button */
+
+    submitButton.disabled = true;
+
+    submitButton.textContent =
+        "Submit Answer";
+
+
+    submitButton.onclick =
+        submitAnswer;
+
+
+    selectionMessage.textContent =
+        "Select an answer";
+
+}
+
+
+
+/* =====================================================
+   SELECT OPTION
+===================================================== */
+
+
+function selectOption(index) {
+
+
+    if (answerSubmitted) {
+
+        return;
+
+    }
+
+
+    selectedAnswer = index;
+
+
+    const allOptions =
+        document.querySelectorAll(".option");
+
+
+    allOptions.forEach(
+        option => {
+
+            option.classList.remove(
+                "selected"
+            );
+
+        }
+    );
+
+
+    allOptions[index]
+        .classList.add("selected");
+
+
+    submitButton.disabled =
+        false;
+
+
+    selectionMessage.textContent =
+        "Answer selected";
+
+}
+
+
+
+/* =====================================================
+   SUBMIT ANSWER
+===================================================== */
+
+
+function submitAnswer() {
+
+
+    if (selectedAnswer === null) {
+
+        return;
+
+    }
+
+
+    if (answerSubmitted) {
+
+        nextQuestion();
+
+        return;
+
+    }
+
+
+    answerSubmitted = true;
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    const allOptions =
+        document.querySelectorAll(".option");
+
+
+    /* Correct answer */
+
+    allOptions[q.answer]
+        .classList.add("correct");
+
+
+    /* Wrong answer */
+
+    if (selectedAnswer !== q.answer) {
+
+        allOptions[selectedAnswer]
+            .classList.add("wrong");
+
+    }
+
+
+    /* Score */
+
+    if (selectedAnswer === q.answer) {
+
+        score++;
+
+        difficultyScores[q.difficulty]++;
+
+        feedbackTitle.textContent =
+            "✓ Correct!";
+
+        feedback.className =
+            "feedback correct-feedback";
+
+    }
+
+    else {
+
+        feedbackTitle.textContent =
+            "✗ Incorrect";
+
+        feedback.className =
+            "feedback wrong-feedback";
+
+    }
+
+
+    /* Explanation */
+
+    feedbackText.textContent =
+        q.explanation;
+
+
+    /* Disable options */
+
+    allOptions.forEach(
+        option => {
+
+            option.style.pointerEvents =
+                "none";
+
+        }
+    );
+
+
+    /* Change button */
+
+    if (currentQuestion === questions.length - 1) {
+
+        submitButton.textContent =
+            "View Result";
+
+    }
+
+    else {
+
+        submitButton.textContent =
+            "Next Question →";
+
+    }
+
+
+    selectionMessage.textContent =
+        selectedAnswer === q.answer
+            ? "Good job!"
+            : `Correct answer: ${String.fromCharCode(65 + q.answer)}`;
+
+}
+
+
+
+/* =====================================================
+   NEXT QUESTION
+===================================================== */
+
+
+function nextQuestion() {
+
+
+    currentQuestion++;
+
+
+    if (currentQuestion >= questions.length) {
+
+        showResult();
+
+        return;
+
+    }
+
+
+    loadQuestion();
+
+}
+
+
+
+/* =====================================================
+   SHOW RESULT
+===================================================== */
+
+
+function showResult() {
+
+
+    document.getElementById("quiz")
+        .style.display = "none";
+
+
+    document.getElementById("result")
+        .style.display = "block";
+
+
+    /* Main score */
+
+    document.getElementById("finalScore")
+        .textContent =
+        `${score} / ${questions.length}`;
+
+
+    /* Percentage */
+
+    const percentage =
+        Math.round(
+            (score / questions.length) * 100
+        );
+
+
+    document.getElementById("percentageScore")
+        .textContent =
+        `${percentage}%`;
+
+
+
+    /* Difficulty scores */
+
+    document.getElementById("easyScore")
+        .textContent =
+        `${difficultyScores.easy} / 5`;
+
+
+    document.getElementById("mediumScore")
+        .textContent =
+        `${difficultyScores.medium} / 5`;
+
+
+    document.getElementById("hardScore")
+        .textContent =
+        `${difficultyScores.hard} / 5`;
+
+
+    document.getElementById("advancedScore")
+        .textContent =
+        `${difficultyScores.advanced} / 5`;
+
+
+    document.getElementById("interviewScore")
+        .textContent =
+        `${difficultyScores.interview} / 5`;
+
+
+
+    /* Result message */
+
+    let message;
+
+
+    if (percentage >= 90) {
+
+        message =
+            "Excellent! You are performing at an interview-ready level.";
+
+    }
+
+    else if (percentage >= 75) {
+
+        message =
+            "Great work! Keep practicing the harder questions.";
+
+    }
+
+    else if (percentage >= 60) {
+
+        message =
+            "Good start. Review the formulas and practice again.";
+
+    }
+
+    else {
+
+        message =
+            "Keep practicing. Master the basics before moving to advanced questions.";
+
+    }
+
+
+    document.getElementById("resultMessage")
+        .textContent =
+        message;
+
+}
+
+
+
+/* =====================================================
+   RESTART QUIZ
+===================================================== */
+
+
+function restartQuiz() {
+
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    selectedAnswer = null;
+
+    answerSubmitted = false;
+
+
+    difficultyScores = {
+
+        easy: 0,
+
+        medium: 0,
+
+        hard: 0,
+
+        advanced: 0,
+
+        interview: 0
+
+    };
+
+
+    document.getElementById("quiz")
+        .style.display = "block";
+
+
+    document.getElementById("result")
+        .style.display = "none";
+
+
+    loadQuestion();
+
+}
+
+
+
+/* =====================================================
+   START QUIZ
+===================================================== */
+
+
+loadQuestion();
+
+
+</script>
+
+
+</body>
+
+</html>

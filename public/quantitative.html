@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AptiAce - Quantitative Aptitude</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 38px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .topics {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 25px;
+        }
+
+        .topic-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.08);
+
+            transition: 0.2s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .topic-number {
+            color: #4f46e5;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .topic-card h2 {
+            margin: 10px 0;
+        }
+
+        .topic-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .practice-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .practice-btn:hover {
+            background: #3730a3;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="logo">
+        AptiAce
+    </div>
+
+    <button
+        class="back-btn"
+        onclick="window.location.href='main.html'">
+
+        ← Back
+
+    </button>
+
+</header>
+
+
+<main class="container">
+
+
+    <h1 class="title">
+        Quantitative Aptitude
+    </h1>
+
+    <p class="subtitle">
+        Master the mathematical concepts commonly
+        asked in placement and interview tests.
+    </p>
+
+
+    <div class="topics">
+
+
+        <!-- 1 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 01
+            </div>
+
+            <h2>
+                Number System
+            </h2>
+
+            <p>
+                Learn integers, divisibility,
+                remainders, factors and number properties.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 02
+            </div>
+
+            <h2>
+                HCF & LCM
+            </h2>
+
+            <p>
+                Practice HCF, LCM and
+                prime factorization problems.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 03
+            </div>
+
+            <h2>
+                Percentages
+            </h2>
+
+            <p>
+                Learn percentage calculations,
+                increase, decrease and applications.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="window.location.href='percentage.html'">
+
+                Start Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 04
+            </div>
+
+            <h2>
+                Profit, Loss & Discount
+            </h2>
+
+            <p>
+                Practice CP, SP, profit,
+                loss and discount problems.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 05
+            </div>
+
+            <h2>
+                Ratio & Proportion
+            </h2>
+
+            <p>
+                Learn ratios, proportions
+                and mixture-based problems.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 06
+            </div>
+
+            <h2>
+                Averages
+            </h2>
+
+            <p>
+                Practice simple and
+                weighted average problems.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 07
+            </div>
+
+            <h2>
+                Problems on Ages
+            </h2>
+
+            <p>
+                Solve past, present and
+                future age problems.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 08
+            </div>
+
+            <h2>
+                Time & Work
+            </h2>
+
+            <p>
+                Learn work efficiency,
+                combined work and completion time.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 9 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 09
+            </div>
+
+            <h2>
+                Pipes & Cisterns
+            </h2>
+
+            <p>
+                Practice filling and
+                emptying tank problems.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 10
+            </div>
+
+            <h2>
+                Time, Speed & Distance
+            </h2>
+
+            <p>
+                Solve speed, distance,
+                relative speed and time problems.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 11 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 11
+            </div>
+
+            <h2>
+                Boats & Streams
+            </h2>
+
+            <p>
+                Practice upstream,
+                downstream and stream problems.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 12 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 12
+            </div>
+
+            <h2>
+                Problems on Trains
+            </h2>
+
+            <p>
+                Learn relative speed
+                and train crossing problems.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 13 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 13
+            </div>
+
+            <h2>
+                Simple & Compound Interest
+            </h2>
+
+            <p>
+                Practice SI, CI, amount
+                and interest calculations.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 14 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 14
+            </div>
+
+            <h2>
+                Probability
+            </h2>
+
+            <p>
+                Solve probability problems
+                involving coins, dice and cards.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+        <!-- 15 -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 15
+            </div>
+
+            <h2>
+                Permutation & Combination
+            </h2>
+
+            <p>
+                Learn arrangements,
+                selections and counting techniques.
+            </p>
+
+            <button class="practice-btn">
+                Start Practice
+            </button>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+<script>
+
+function startQuiz(topic) {
+
+    window.location.href =
+        "quiz.html?topic=" +
+        encodeURIComponent(topic);
+
+}
+
+</script>
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Number System')">
+
+    startQuiz('Number System')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('HCF & LCM')">
+
+   startQuiz('HCF & LCM')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Percentage')">
+
+    
+   startQuiz('Percentage')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Profit, Loss & Discount')">
+
+    startQuiz('Profit, Loss & Discount')
+
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Ratio & Proportion')">
+
+    startQuiz('Ratio & Proportion')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Averages')">
+
+ startQuiz('Averages')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Problems on Ages')">
+
+     startQuiz('Problems on Ages')
+
+</button>
+<button
+    class="practice-btn"
+    onclick="startQuiz('Time & Work')">
+
+
+ startQuiz('Time & Work')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Pipes & Cisterns')">
+
+    startQuiz('Pipes & Cisterns')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Time, Speed & Distance')">
+
+   startQuiz('Time, Speed & Distance')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Boats & Streams')">
+
+  startQuiz('Boats & Streams')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Problems on Trains')">
+
+    startQuiz('Problems on Trains')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Simple & Compound Interest')">
+
+    startQuiz('Simple & Compound Interest')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Probability')">
+
+    startQuiz('Probability')
+
+<button
+    class="practice-btn"
+    onclick="startQuiz('Permutation & Combination')">
+
+    startQuiz('Permutation & Combination')
+
+</button>
+</html>
