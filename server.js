@@ -1,9 +1,19 @@
 const express = require("express");
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
+const fs = require("fs");
 const bcrypt = require("bcrypt");
+const session = require("express-session");
 
 const app = express();
+app.use(session({
+    secret: "aptiace-secret-key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 24 * 60 * 60 * 1000
+    }
+}));
 const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -199,6 +209,8 @@ app.get("/", (req, res) => {
 
 });
 
+
+
 // =====================================================
 // REGISTER
 // =====================================================
@@ -208,17 +220,23 @@ app.post("/register", async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
+
         return res.status(400).json({
             success: false,
             message: "Email and password are required"
         });
+
     }
 
-    console.log("Registration attempt:", email);
+    console.log(
+        "Registration attempt:",
+        email
+    );
 
     try {
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword =
+            await bcrypt.hash(password, 10);
 
         db.run(
             `
@@ -264,8 +282,11 @@ app.post("/register", async (req, res) => {
                         "Account created successfully",
 
                     user: {
+
                         id: this.lastID,
+
                         email: email
+
                     }
 
                 });
@@ -291,7 +312,6 @@ app.post("/register", async (req, res) => {
     }
 
 });
-
 // =====================================================
 // LOGIN
 // =====================================================
@@ -391,7 +411,21 @@ app.post("/login", (req, res) => {
                     email
                 );
 
-                res.json({
+
+                // =====================================================
+                // CREATE LOGIN SESSION
+                // =====================================================
+
+                req.session.user = {
+
+                    id: user.id,
+
+                    email: user.email
+
+                };
+
+
+                return res.json({
 
                     success: true,
 
@@ -415,7 +449,7 @@ app.post("/login", (req, res) => {
                     error.message
                 );
 
-                res.status(500).json({
+                return res.status(500).json({
 
                     success: false,
 
@@ -431,6 +465,74 @@ app.post("/login", (req, res) => {
 
 });
 
+
+// =====================================================
+// CHECK LOGIN
+// =====================================================
+
+app.get("/check-login", (req, res) => {
+
+    if (req.session && req.session.user) {
+
+        return res.json({
+
+            loggedIn: true,
+
+            email:
+                req.session.user.email
+
+        });
+
+    }
+
+    return res.json({
+
+        loggedIn: false
+
+    });
+
+});
+
+
+// =====================================================
+// LOGOUT
+// =====================================================
+
+app.get("/logout", (req, res) => {
+
+    req.session.destroy((err) => {
+
+        if (err) {
+
+            console.error(
+                "Logout error:",
+                err.message
+            );
+
+            return res.status(500).json({
+
+                success: false,
+
+                message:
+                    "Logout failed"
+
+            });
+
+        }
+
+        return res.json({
+
+            success: true,
+
+            message:
+                "Logged out successfully"
+
+        });
+
+    });
+
+});
+   
 // =====================================================
 // GET QUESTIONS BY TOPIC
 // =====================================================
@@ -520,39 +622,9 @@ app.get("/api/questions", (req, res) => {
 
 });
 
-// =====================================================
-// GET ALL QUESTIONS
-// =====================================================
 
-app.get("/api/all-questions", (req, res) => {
 
-    db.all(
-        "SELECT * FROM questions ORDER BY id",
-        [],
-        (err, rows) => {
 
-            if (err) {
-
-                console.error(
-                    "Database error:",
-                    err.message
-                );
-
-                return res.status(500).json({
-
-                    error:
-                        "Database error"
-
-                });
-
-            }
-
-            res.json(rows);
-
-        }
-    );
-
-});
 
 // =====================================================
 // TEST DATABASE
@@ -626,6 +698,696 @@ app.get("/api/test-explanation", (req, res) => {
     );
 
 });
+// =====================================================
+// IMPORT QUESTIONS FROM questions.sql
+// =====================================================
+// =====================================================
+// FIX MALFORMED HCF & LCM TOPICS
+// =====================================================
+
+
+
+app.get("/api/import-questions", (req, res) => {
+
+    const sqlPath = path.join(__dirname, "questions.sql");
+
+    console.log("=====================================");
+    console.log("Starting question import...");
+    console.log("SQL file:", sqlPath);
+
+    // -------------------------------------------------
+    // CHECK SQL FILE
+    // -------------------------------------------------
+
+    if (!fs.existsSync(sqlPath)) {
+
+        console.error("questions.sql not found!");
+
+        return res.status(404).json({
+
+            success: false,
+            message: "questions.sql file not found"
+
+        });
+
+    }
+
+    // -------------------------------------------------
+    // READ SQL FILE
+    // -------------------------------------------------
+
+    const sqlFile =
+        fs.readFileSync(sqlPath, "utf8");
+
+    if (!sqlFile.trim()) {
+
+        return res.status(400).json({
+
+            success: false,
+            message: "questions.sql is empty"
+
+        });
+
+    }
+
+    console.log(
+        "SQL file loaded successfully."
+    );
+
+
+    // -------------------------------------------------
+    // FIND INSERT STATEMENTS
+    // -------------------------------------------------
+
+    const insertRegex =
+        /INSERT\s+INTO\s+questions[\s\S]*?;/gi;
+
+    const statements =
+        sqlFile.match(insertRegex);
+
+
+    if (!statements || statements.length === 0) {
+
+        console.error(
+            "No INSERT INTO questions statements found."
+        );
+
+        return res.status(400).json({
+
+            success: false,
+
+            message:
+                "No INSERT INTO questions statements found in questions.sql"
+
+        });
+
+    }
+
+
+    console.log(
+        "INSERT statements found:",
+        statements.length
+    );
+
+
+    let imported = 0;
+    let skipped = 0;
+    let errors = 0;
+
+
+    // -------------------------------------------------
+    // PROCESS ONE SQL STATEMENT
+    // -------------------------------------------------
+
+    const processStatement = (index) => {
+
+        if (index >= statements.length) {
+
+            console.log("=====================================");
+            console.log("IMPORT FINISHED");
+            console.log("Imported:", imported);
+            console.log("Skipped:", skipped);
+            console.log("Errors:", errors);
+            console.log("=====================================");
+
+
+            // -------------------------------------------------
+            // FINAL DATABASE CHECK
+            // -------------------------------------------------
+
+            db.get(
+                "SELECT COUNT(*) AS count FROM questions",
+                [],
+                (err, row) => {
+
+                    if (err) {
+
+                        console.error(
+                            "Final count error:",
+                            err.message
+                        );
+
+                        return res.status(500).json({
+
+                            success: false,
+
+                            message:
+                                err.message
+
+                        });
+
+                    }
+
+
+                    // -------------------------------------------------
+                    // TOPIC COUNTS
+                    // -------------------------------------------------
+
+                    db.all(
+                        `SELECT topic, COUNT(*) AS count
+                         FROM questions
+                         GROUP BY topic
+                         ORDER BY topic`,
+                        [],
+                        (err, topics) => {
+
+                            if (err) {
+
+                                return res.status(500).json({
+
+                                    success: false,
+
+                                    message:
+                                        err.message
+
+                                });
+
+                            }
+
+
+                            console.log(
+                                "Total questions:",
+                                row.count
+                            );
+
+                            console.table(topics);
+
+
+                            return res.json({
+
+                                success: true,
+
+                                message:
+                                    "Question import completed",
+
+                                imported:
+                                    imported,
+
+                                skipped:
+                                    skipped,
+
+                                errors:
+                                    errors,
+
+                                totalQuestions:
+                                    row.count,
+
+                                topics:
+                                    topics
+
+                            });
+
+                        }
+                    );
+
+                }
+            );
+
+            return;
+        }
+
+
+        const statement =
+            statements[index].trim();
+
+
+        // -------------------------------------------------
+        // GET VALUES PART
+        // -------------------------------------------------
+
+        const valuesIndex =
+            statement
+                .toUpperCase()
+                .indexOf("VALUES");
+
+
+        if (valuesIndex === -1) {
+
+            console.error(
+                "VALUES keyword not found."
+            );
+
+            errors++;
+
+            processStatement(index + 1);
+
+            return;
+
+        }
+
+
+        const valuesText =
+            statement
+                .substring(valuesIndex + 6)
+                .trim()
+                .replace(/;$/, "");
+
+
+        // -------------------------------------------------
+        // EXTRACT ROWS
+        // -------------------------------------------------
+
+        const rows = [];
+
+        let current = "";
+        let depth = 0;
+        let inString = false;
+
+
+        for (
+            let i = 0;
+            i < valuesText.length;
+            i++
+        ) {
+
+            const char =
+                valuesText[i];
+
+
+            // Handle SQL single quotes
+            if (
+                char === "'" &&
+                valuesText[i + 1] === "'"
+            ) {
+
+                current += "''";
+
+                i++;
+
+                continue;
+
+            }
+
+
+            if (char === "'") {
+
+                inString =
+                    !inString;
+
+            }
+
+
+            if (!inString) {
+
+                if (char === "(") {
+
+                    depth++;
+
+                }
+
+                else if (char === ")") {
+
+                    depth--;
+
+                }
+
+            }
+
+
+            current += char;
+
+
+            if (
+                depth === 0 &&
+                char === ")"
+            ) {
+
+                rows.push(
+                    current.trim()
+                );
+
+                current = "";
+
+
+                // Skip comma
+                if (
+                    valuesText[i + 1] === ","
+                ) {
+
+                    i++;
+
+                }
+
+            }
+
+        }
+
+
+        console.log(
+            "Rows found in statement:",
+            rows.length
+        );
+
+
+        // -------------------------------------------------
+        // PROCESS ROWS
+        // -------------------------------------------------
+
+        const processRow = (rowIndex) => {
+
+            if (
+                rowIndex >= rows.length
+            ) {
+
+                processStatement(
+                    index + 1
+                );
+
+                return;
+
+            }
+
+
+            const row =
+                rows[rowIndex];
+
+
+            // -------------------------------------------------
+            // SPLIT VALUES
+            // -------------------------------------------------
+
+            const parts = [];
+
+            let value = "";
+            let inString = false;
+
+
+            for (
+                let i = 1;
+                i < row.length - 1;
+                i++
+            ) {
+
+                const char =
+                    row[i];
+
+
+                if (
+                    char === "'" &&
+                    row[i + 1] === "'"
+                ) {
+
+                    value += "''";
+
+                    i++;
+
+                    continue;
+
+                }
+
+
+                if (char === "'") {
+
+                    inString =
+                        !inString;
+
+                }
+
+
+                if (
+                    char === "," &&
+                    !inString
+                ) {
+
+                    parts.push(
+                        value.trim()
+                    );
+
+                    value = "";
+
+                }
+
+                else {
+
+                    value += char;
+
+                }
+
+            }
+
+
+            parts.push(
+                value.trim()
+            );
+
+
+            // -------------------------------------------------
+            // EXPECTED 9 COLUMNS
+            // -------------------------------------------------
+
+            if (
+                parts.length !== 9
+            ) {
+
+                console.error(
+                    "Invalid question row. Values found:",
+                    parts.length
+                );
+
+                errors++;
+
+                processRow(
+                    rowIndex + 1
+                );
+
+                return;
+
+            }
+
+
+            // -------------------------------------------------
+            // CLEAN SQL STRING
+            // -------------------------------------------------
+
+            const cleanValue = (text) => {
+
+                text =
+                    text.trim();
+
+
+                if (
+                    text.startsWith("'") &&
+                    text.endsWith("'")
+                ) {
+
+                    text =
+                        text.substring(
+                            1,
+                            text.length - 1
+                        );
+
+                }
+
+
+                return text
+                    .replace(/''/g, "'");
+
+            };
+
+
+            const topic =
+                cleanValue(parts[0]);
+
+            const question =
+                cleanValue(parts[1]);
+
+            const option_a =
+                cleanValue(parts[2]);
+
+            const option_b =
+                cleanValue(parts[3]);
+
+            const option_c =
+                cleanValue(parts[4]);
+
+            const option_d =
+                cleanValue(parts[5]);
+
+            const correct_answer =
+                cleanValue(parts[6]);
+
+            const difficulty =
+                cleanValue(parts[7]);
+
+            const explanation =
+                cleanValue(parts[8]);
+
+
+            // -------------------------------------------------
+            // CHECK DUPLICATE
+            // -------------------------------------------------
+
+            db.get(
+                `SELECT id
+                 FROM questions
+                 WHERE question = ?
+                 LIMIT 1`,
+                [question],
+                (err, existing) => {
+
+                    if (err) {
+
+                        console.error(
+                            "Duplicate check error:",
+                            err.message
+                        );
+
+                        errors++;
+
+                        processRow(
+                            rowIndex + 1
+                        );
+
+                        return;
+
+                    }
+
+
+                    // -------------------------------------------------
+                    // ALREADY EXISTS
+                    // -------------------------------------------------
+
+                    if (existing) {
+
+                        console.log(
+                            "Skipped existing:",
+                            topic,
+                            "-",
+                            question
+                        );
+
+                        skipped++;
+
+                        processRow(
+                            rowIndex + 1
+                        );
+
+                        return;
+
+                    }
+
+
+                    // -------------------------------------------------
+                    // INSERT QUESTION
+                    // -------------------------------------------------
+
+                    db.run(
+                        `INSERT INTO questions
+                        (
+                            topic,
+                            question,
+                            option_a,
+                            option_b,
+                            option_c,
+                            option_d,
+                            correct_answer,
+                            difficulty,
+                            explanation
+                        )
+                        VALUES
+                        (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                        [
+                            topic,
+                            question,
+                            option_a,
+                            option_b,
+                            option_c,
+                            option_d,
+                            correct_answer,
+                            difficulty,
+                            explanation
+                        ],
+                        function (err) {
+
+                            if (err) {
+
+                                console.error(
+                                    "Insert error:",
+                                    err.message
+                                );
+
+                                console.error(
+                                    "Topic:",
+                                    topic
+                                );
+
+                                console.error(
+                                    "Question:",
+                                    question
+                                );
+
+                                errors++;
+
+                            }
+
+                            else {
+
+                                console.log(
+                                    "Imported:",
+                                    topic,
+                                    "-",
+                                    question
+                                );
+
+                                imported++;
+
+                            }
+
+
+                            processRow(
+                                rowIndex + 1
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        };
+
+
+        processRow(0);
+
+    };
+
+
+    processStatement(0);
+
+});
+// =====================================================
+// CLEAN MALFORMED HCF & LCM TOPIC NAMES
+// =====================================================
+
+db.run(
+    `
+    UPDATE questions
+    SET topic = 'HCF & LCM'
+    WHERE topic LIKE '%HCF & LCM%'
+    `,
+    [],
+    function (err) {
+
+        if (err) {
+
+            console.error(
+                "HCF & LCM cleanup error:",
+                err.message
+            );
+
+        } else {
+
+            console.log(
+                "HCF & LCM cleanup:",
+                this.changes,
+                "rows updated"
+            );
+
+        }
+
+    }
+);
+
 
 // =====================================================
 // START SERVER
@@ -638,3 +1400,4 @@ app.listen(PORT, () => {
     );
 
 });
+

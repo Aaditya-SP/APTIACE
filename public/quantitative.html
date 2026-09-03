@@ -1,7 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -9,9 +11,11 @@
 
     <title>AptiAce - Quantitative Aptitude</title>
 
-    <link rel="stylesheet" href="style.css">
-
     <style>
+
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
@@ -44,6 +48,10 @@
             font-size: 15px;
         }
 
+        .back-btn:hover {
+            background: #3730a3;
+        }
+
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -67,7 +75,6 @@
             display: grid;
             grid-template-columns:
                 repeat(auto-fit, minmax(280px, 1fr));
-
             gap: 25px;
         }
 
@@ -75,6 +82,7 @@
             background: white;
             padding: 25px;
             border-radius: 15px;
+
             box-shadow:
                 0 5px 20px rgba(0,0,0,0.08);
 
@@ -111,6 +119,7 @@
             border-radius: 7px;
             cursor: pointer;
             font-size: 15px;
+            margin-top: 10px;
         }
 
         .practice-btn:hover {
@@ -125,6 +134,10 @@
 <body>
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="header">
 
     <div class="logo">
@@ -133,7 +146,7 @@
 
     <button
         class="back-btn"
-        onclick="window.location.href='main.html'">
+        onclick="goBack()">
 
         ← Back
 
@@ -142,8 +155,11 @@
 </header>
 
 
-<main class="container">
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
 
+<main class="container">
 
     <h1 class="title">
         Quantitative Aptitude
@@ -158,7 +174,9 @@
     <div class="topics">
 
 
-        <!-- 1 -->
+        <!-- =================================================
+             TOPIC 01
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -175,14 +193,20 @@
                 remainders, factors and number properties.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Number System')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 2 -->
+        <!-- =================================================
+             TOPIC 02
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -199,14 +223,20 @@
                 prime factorization problems.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('HCF & LCM')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 3 -->
+        <!-- =================================================
+             TOPIC 03
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -225,7 +255,7 @@
 
             <button
                 class="practice-btn"
-                onclick="window.location.href='percentage.html'">
+                onclick="startQuiz('Percentage')">
 
                 Start Practice
 
@@ -234,7 +264,9 @@
         </div>
 
 
-        <!-- 4 -->
+        <!-- =================================================
+             TOPIC 04
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -251,14 +283,20 @@
                 loss and discount problems.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Profit & Loss')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 5 -->
+        <!-- =================================================
+             TOPIC 05
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -275,14 +313,20 @@
                 and mixture-based problems.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Ratio & Proportion')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 6 -->
+        <!-- =================================================
+             TOPIC 06
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -299,14 +343,20 @@
                 weighted average problems.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Averages')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 7 -->
+        <!-- =================================================
+             TOPIC 07
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -323,14 +373,20 @@
                 future age problems.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Problems on Ages')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 8 -->
+        <!-- =================================================
+             TOPIC 08
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -347,14 +403,20 @@
                 combined work and completion time.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Time & Work')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 9 -->
+        <!-- =================================================
+             TOPIC 09
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -371,14 +433,20 @@
                 emptying tank problems.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Pipes & Cisterns')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 10 -->
+        <!-- =================================================
+             TOPIC 10
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -395,14 +463,20 @@
                 relative speed and time problems.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Time, Speed & Distance')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 11 -->
+        <!-- =================================================
+             TOPIC 11
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -419,14 +493,20 @@
                 downstream and stream problems.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Boats & Streams')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 12 -->
+        <!-- =================================================
+             TOPIC 12
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -443,14 +523,20 @@
                 and train crossing problems.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Problems on Trains')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 13 -->
+        <!-- =================================================
+             TOPIC 13
+        ================================================== -->
 
         <div class="topic-card">
 
@@ -459,27 +545,63 @@
             </div>
 
             <h2>
-                Simple & Compound Interest
+                Simple Interest
             </h2>
 
             <p>
-                Practice SI, CI, amount
-                and interest calculations.
+                Practice simple interest,
+                principal, rate and amount.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Simple Interest')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 14 -->
+        <!-- =================================================
+             TOPIC 14
+        ================================================== -->
 
         <div class="topic-card">
 
             <div class="topic-number">
                 TOPIC 14
+            </div>
+
+            <h2>
+                Compound Interest
+            </h2>
+
+            <p>
+                Practice compound interest,
+                amount and growth calculations.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Compound Interest')">
+
+                Start Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 15
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 15
             </div>
 
             <h2>
@@ -491,44 +613,58 @@
                 involving coins, dice and cards.
             </p>
 
-            <button class="practice-btn">
+            <button
+                class="practice-btn"
+                onclick="startQuiz('Probability')">
+
                 Start Practice
+
             </button>
 
         </div>
 
 
-        <!-- 15 -->
+      <!-- =================================================
+     TOPIC 16
+================================================== -->
 
-        <div class="topic-card">
+<div class="topic-card">
 
-            <div class="topic-number">
-                TOPIC 15
-            </div>
+```
+<div class="topic-number">
+    TOPIC 16
+</div>
 
-            <h2>
-                Permutation & Combination
-            </h2>
+<h2>
+    Permutations & Combinations
+</h2>
 
-            <p>
-                Learn arrangements,
-                selections and counting techniques.
-            </p>
+<p>
+    Learn arrangements,
+    selections and counting techniques.
+</p>
 
-            <button class="practice-btn">
-                Start Practice
-            </button>
+<button
+    class="practice-btn"
+    onclick="startQuiz('Permutations & Combinations')">
 
-        </div>
+    Start Practice
+
+</button>
+```
+
+</div>
 
 
-    </div>
-
-</main>
+<!-- =====================================================
+     QUIZ NAVIGATION
+===================================================== -->
 
 <script>
 
 function startQuiz(topic) {
+
+    console.log("Starting quiz for:", topic);
 
     window.location.href =
         "quiz.html?topic=" +
@@ -536,101 +672,17 @@ function startQuiz(topic) {
 
 }
 
+
+function goBack() {
+
+    window.location.href = "main.html";
+
+}
+
 </script>
 
-<button
-    class="practice-btn"
-    onclick="startQuiz('Number System')">
 
-    startQuiz('Number System')
+</body>
 
-<button
-    class="practice-btn"
-    onclick="startQuiz('HCF & LCM')">
-
-   startQuiz('HCF & LCM')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Percentage')">
-
-    
-   startQuiz('Percentage')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Profit, Loss & Discount')">
-
-    startQuiz('Profit, Loss & Discount')
-
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Ratio & Proportion')">
-
-    startQuiz('Ratio & Proportion')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Averages')">
-
- startQuiz('Averages')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Problems on Ages')">
-
-     startQuiz('Problems on Ages')
-
-</button>
-<button
-    class="practice-btn"
-    onclick="startQuiz('Time & Work')">
-
-
- startQuiz('Time & Work')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Pipes & Cisterns')">
-
-    startQuiz('Pipes & Cisterns')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Time, Speed & Distance')">
-
-   startQuiz('Time, Speed & Distance')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Boats & Streams')">
-
-  startQuiz('Boats & Streams')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Problems on Trains')">
-
-    startQuiz('Problems on Trains')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Simple & Compound Interest')">
-
-    startQuiz('Simple & Compound Interest')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Probability')">
-
-    startQuiz('Probability')
-
-<button
-    class="practice-btn"
-    onclick="startQuiz('Permutation & Combination')">
-
-    startQuiz('Permutation & Combination')
-
-</button>
 </html>
+```
