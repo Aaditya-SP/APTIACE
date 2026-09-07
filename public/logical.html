@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AptiAce - Logical Reasoning</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 38px;
+            color: #0f172a;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .topics {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .topic-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.25s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+
+        .topic-number {
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .topic-card h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #1e293b;
+        }
+
+        .topic-card p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0 0 20px;
+            flex-grow: 1;
+        }
+
+        .practice-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .practice-btn:hover {
+            background: #1d4ed8;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="logo">
+        AptiAce
+    </div>
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ← Back to Dashboard
+
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="container">
+
+    <h1 class="title">
+        Logical Reasoning
+    </h1>
+
+    <p class="subtitle">
+        Sharpen your analytical thinking, pattern recognition, and deductive problem-solving skills for placement exams and interviews.
+    </p>
+
+
+    <div class="topics">
+
+
+        <!-- =================================================
+             TOPIC 01
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 01
+            </div>
+
+            <h2>
+                Number Series
+            </h2>
+
+            <p>
+                Identify mathematical patterns, differences, ratios, squares, cubes, and alternating sequences in number series.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Number Series')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 02
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 02
+            </div>
+
+            <h2>
+                Letter and Symbol Series
+            </h2>
+
+            <p>
+                Decode alphabetical progressions, positional values, alternating patterns, and symbol combinations.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Letter and Symbol Series')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 03
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 03
+            </div>
+
+            <h2>
+                Verbal Classification
+            </h2>
+
+            <p>
+                Identify the odd word out by recognizing underlying categorical, functional, or semantic relationships.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Verbal Classification')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 04
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 04
+            </div>
+
+            <h2>
+                Essential Part
+            </h2>
+
+            <p>
+                Determine the indispensable component without which a concept, object, or entity cannot exist.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Essential Part')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 05
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 05
+            </div>
+
+            <h2>
+                Analogies
+            </h2>
+
+            <p>
+                Analyze word relationships (cause-effect, worker-tool, part-whole) and map parallel connections.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Analogies')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 06
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 06
+            </div>
+
+            <h2>
+                Artificial Language
+            </h2>
+
+            <p>
+                Decipher invented vocabulary by breaking down morphemes, prefixes, and suffixes to deduce translations.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Artificial Language')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 07
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 07
+            </div>
+
+            <h2>
+                Matching Definitions
+            </h2>
+
+            <p>
+                Evaluate real-world scenarios against precise operational definitions and identify which scenario qualifies.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Matching Definitions')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 08
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 08
+            </div>
+
+            <h2>
+                Making Judgments
+            </h2>
+
+            <p>
+                Apply established rules, organizational policies, and criteria objectively to determine the appropriate decision.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Making Judgments')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 09
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 09
+            </div>
+
+            <h2>
+                Verbal Reasoning
+            </h2>
+
+            <p>
+                Test critical reading, factual inference, logic statements, and evaluation of truth values.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Verbal Reasoning')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 10
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 10
+            </div>
+
+            <h2>
+                Logical Problems
+            </h2>
+
+            <p>
+                Solve constraint satisfaction puzzles, ordering problems, truth-teller scenarios, and spatial arrangements.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Logical Problems')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 11
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 11
+            </div>
+
+            <h2>
+                Logical Games
+            </h2>
+
+            <p>
+                Tackle complex multi-condition scheduling, grouping, round-robin tournaments, and seating configurations.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Logical Games')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 12
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 12
+            </div>
+
+            <h2>
+                Analyzing Arguments
+            </h2>
+
+            <p>
+                Deconstruct premises and conclusions to identify assumptions, strengthen or weaken arguments, and spot flaws.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Analyzing Arguments')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 13
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 13
+            </div>
+
+            <h2>
+                Statement and Assumption
+            </h2>
+
+            <p>
+                Detect implicit beliefs, underlying presuppositions, and unspoken premises taken for granted in a statement.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Statement and Assumption')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 14
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 14
+            </div>
+
+            <h2>
+                Course of Action
+            </h2>
+
+            <p>
+                Judge practical, feasible, and effective administrative solutions to tackle real-life situational challenges.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Course of Action')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 15
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 15
+            </div>
+
+            <h2>
+                Statement and Conclusion
+            </h2>
+
+            <p>
+                Determine whether specific conclusions logically and indisputably follow from given factual statements.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Statement and Conclusion')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 16
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 16
+            </div>
+
+            <h2>
+                Theme Detection
+            </h2>
+
+            <p>
+                Extract the central message, author's intent, and core takeaway from concise analytical passages.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Theme Detection')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 17
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 17
+            </div>
+
+            <h2>
+                Cause and Effect
+            </h2>
+
+            <p>
+                Distinguish between root causes, immediate effects, independent events, and common-cause results.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Cause and Effect')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 18
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 18
+            </div>
+
+            <h2>
+                Statement and Argument
+            </h2>
+
+            <p>
+                Evaluate arguments as strong or weak based on factual relevance, universal validity, and sound logic.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Statement and Argument')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 19
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 19
+            </div>
+
+            <h2>
+                Logical Deduction
+            </h2>
+
+            <p>
+                Master classical syllogisms, Venn diagram deduction, universal quantifiers, and categorical validity.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Logical Deduction')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     NAVIGATION SCRIPT
+===================================================== -->
+
+<script>
+
+function openTopic(topic) {
+
+    console.log("Opening logical topic:", topic);
+
+    window.location.href =
+        "logical-topic.html?topic=" +
+        encodeURIComponent(topic);
+
+}
+
+
+function goBack() {
+
+    window.location.href = "main.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>

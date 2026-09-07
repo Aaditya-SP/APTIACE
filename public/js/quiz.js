@@ -702,6 +702,582 @@ const formulas = {
             "Number of circular arrangements = (n − 1)!"
         ]
 
+    ],
+
+
+    // =================================================
+    // VERBAL ABILITY TOPICS (17-35)
+    // =================================================
+
+
+    // =================================================
+    // 17 - SPOTTING ERRORS
+    // =================================================
+
+    "Spotting Errors": [
+
+        [
+            "Subject-Verb Agreement",
+            "Singular subject → singular verb. Plural subject → plural verb."
+        ],
+
+        [
+            "Tense Consistency",
+            "Do not mix tenses in the same sentence without reason."
+        ],
+
+        [
+            "Pronoun Agreement",
+            "Pronouns must agree with their antecedents in number and gender."
+        ],
+
+        [
+            "Article Usage",
+            "'a' before consonant sounds, 'an' before vowel sounds, 'the' for specific nouns."
+        ],
+
+        [
+            "Preposition Rules",
+            "'agree with' a person, 'agree to' a proposal, 'agree on' a point."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 18 - SYNONYMS
+    // =================================================
+
+    "Synonyms": [
+
+        [
+            "Definition",
+            "A synonym is a word with the same or similar meaning as another word."
+        ],
+
+        [
+            "Context Matters",
+            "Choose the synonym that matches the specific context of usage."
+        ],
+
+        [
+            "Common Roots",
+            "'bene' = good, 'mal' = bad, 'phil' = love, 'phob' = fear."
+        ],
+
+        [
+            "Elimination Strategy",
+            "Remove antonyms and unrelated words first, then pick the closest match."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 19 - ANTONYMS
+    // =================================================
+
+    "Antonyms": [
+
+        [
+            "Definition",
+            "An antonym is a word with the opposite meaning of another word."
+        ],
+
+        [
+            "Prefix Antonyms",
+            "'un-', 'dis-', 'in-', 'im-', 'ir-', 'il-' often create opposites."
+        ],
+
+        [
+            "Tricky Words",
+            "'invaluable' = very valuable (NOT 'not valuable')."
+        ],
+
+        [
+            "Strategy",
+            "Know the word's meaning first, think of its opposite, then match options."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 20 - SELECTING WORDS
+    // =================================================
+
+    "Selecting Words": [
+
+        [
+            "Context Clues",
+            "Read the entire sentence to understand tone and meaning before choosing."
+        ],
+
+        [
+            "Signal Words",
+            "'but/however' = contrast, 'and/moreover' = addition, 'because' = cause."
+        ],
+
+        [
+            "Collocations",
+            "'make a decision' (not 'do'), 'heavy rain' (not 'strong')."
+        ],
+
+        [
+            "Grammar Fit",
+            "The word must match the required part of speech (noun, verb, adjective)."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 21 - SPELLINGS
+    // =================================================
+
+    "Spellings": [
+
+        [
+            "i before e rule",
+            "'i' before 'e' except after 'c'. Exceptions: weird, seize, neither."
+        ],
+
+        [
+            "Double Consonants",
+            "Double the final consonant before '-ing'/'-ed' if word ends in vowel+consonant: run→running."
+        ],
+
+        [
+            "Drop the 'e'",
+            "Drop silent 'e' before vowel suffixes: make→making. Keep before consonants: hope→hopeful."
+        ],
+
+        [
+            "Common Misspellings",
+            "accommodate, occurrence, separate, necessary, definitely, embarrass."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 22 - SENTENCE FORMATION
+    // =================================================
+
+    "Sentence Formation": [
+
+        [
+            "SVO Order",
+            "English follows Subject-Verb-Object order: 'The cat ate the fish.'"
+        ],
+
+        [
+            "Adjective Placement",
+            "Adjectives come before nouns: 'a beautiful house' (not 'a house beautiful')."
+        ],
+
+        [
+            "Article Clues",
+            "Articles (a, an, the) always precede the noun or its adjective."
+        ],
+
+        [
+            "Strategy",
+            "Identify the subject first, then the verb, then arrange the rest."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 23 - ORDERING OF WORDS
+    // =================================================
+
+    "Ordering of Words": [
+
+        [
+            "Connectors",
+            "Words like 'and', 'but', 'however', 'which', 'who' indicate order."
+        ],
+
+        [
+            "Pronoun References",
+            "Pronouns must come after the noun they refer to."
+        ],
+
+        [
+            "Logical Sequence",
+            "Cause before effect, general before specific, introduction before detail."
+        ],
+
+        [
+            "Strategy",
+            "Find mandatory pairs first, then build the sequence around them."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 24 - SENTENCE CORRECTION
+    // =================================================
+
+    "Sentence Correction": [
+
+        [
+            "Subject-Verb Agreement",
+            "Check the verb matches the subject, especially with 'neither...nor', 'either...or'."
+        ],
+
+        [
+            "Parallel Structure",
+            "Items in a list must be in the same form: 'to read, to write, to learn'."
+        ],
+
+        [
+            "Modifier Placement",
+            "Place modifiers next to the word they describe to avoid ambiguity."
+        ],
+
+        [
+            "Comparisons",
+            "'er/more' for two things, 'est/most' for three or more."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 25 - SENTENCE IMPROVEMENT
+    // =================================================
+
+    "Sentence Improvement": [
+
+        [
+            "Conciseness",
+            "'at this point in time' → 'now', 'in spite of the fact that' → 'although'."
+        ],
+
+        [
+            "Avoid Redundancy",
+            "'return back' → 'return', 'repeat again' → 'repeat', 'advance forward' → 'advance'."
+        ],
+
+        [
+            "Active Voice",
+            "Prefer active voice for clarity: 'She wrote the report' over 'The report was written by her'."
+        ],
+
+        [
+            "Correct Idioms",
+            "'comply with' (not 'to'), 'different from' (not 'than'), 'prefer X to Y' (not 'than')."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 26 - COMPLETING STATEMENTS
+    // =================================================
+
+    "Completing Statements": [
+
+        [
+            "Signal Words",
+            "'although' → contrast, 'because' → reason, 'therefore' → result."
+        ],
+
+        [
+            "Logical Completion",
+            "The ending must follow logically from the beginning of the sentence."
+        ],
+
+        [
+            "Tone Matching",
+            "The completion should match the formal/informal, positive/negative tone."
+        ],
+
+        [
+            "Strategy",
+            "Predict the ending before reading options, then match your prediction."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 27 - ORDERING OF SENTENCES
+    // =================================================
+
+    "Ordering of Sentences": [
+
+        [
+            "Opening Sentence",
+            "Introduces the topic; does not contain undefined pronouns or references."
+        ],
+
+        [
+            "Pronoun Chain",
+            "Pronouns (he, she, it, this) must follow the noun they refer to."
+        ],
+
+        [
+            "Transition Words",
+            "'however' = contrast, 'moreover' = addition, 'finally' = conclusion."
+        ],
+
+        [
+            "Closing Sentence",
+            "Summarizes, concludes or states the final outcome."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 28 - PARAGRAPH FORMATION
+    // =================================================
+
+    "Paragraph Formation": [
+
+        [
+            "Topic Sentence",
+            "The most general statement is usually the opening sentence."
+        ],
+
+        [
+            "Supporting Details",
+            "Sentences that elaborate or give examples follow the topic sentence."
+        ],
+
+        [
+            "Logical Flow",
+            "General → Specific, Cause → Effect, Problem → Solution."
+        ],
+
+        [
+            "Conclusion Markers",
+            "'Thus', 'Hence', 'In conclusion', 'Therefore' indicate the last sentence."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 29 - CLOZE TEST
+    // =================================================
+
+    "Cloze Test": [
+
+        [
+            "Read First",
+            "Read the entire passage before filling any blank."
+        ],
+
+        [
+            "Grammar Fit",
+            "The word must fit the correct part of speech, tense and form."
+        ],
+
+        [
+            "Context Clues",
+            "Surrounding sentences give clues about meaning and tone."
+        ],
+
+        [
+            "Fill Easy First",
+            "Fill the obvious blanks first — they help with the harder ones."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 30 - COMPREHENSION
+    // =================================================
+
+    "Comprehension": [
+
+        [
+            "Factual Questions",
+            "Answer is directly stated in the passage — locate the keywords."
+        ],
+
+        [
+            "Inference Questions",
+            "Answer is implied — choose what is logically supported, not extreme."
+        ],
+
+        [
+            "Main Idea",
+            "Look at the first and last paragraphs for the central theme."
+        ],
+
+        [
+            "Author's Tone",
+            "Is the author critical, supportive, neutral, sarcastic, or optimistic?"
+        ],
+
+        [
+            "Strategy",
+            "Skim questions first, then read the passage — you'll know what to look for."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 31 - ONE WORD SUBSTITUTES
+    // =================================================
+
+    "One Word Substitutes": [
+
+        [
+            "Definition",
+            "A single word that replaces a phrase: 'A lover of books' = 'Bibliophile'."
+        ],
+
+        [
+            "Root Words",
+            "'graph' = write, 'phile' = lover, 'phobia' = fear, 'cide' = killing."
+        ],
+
+        [
+            "Common Prefixes",
+            "'mono' = one, 'poly' = many, 'bio' = life, 'geo' = earth, 'omni' = all."
+        ],
+
+        [
+            "Strategy",
+            "Use root words to decode unfamiliar options. Eliminate clearly wrong meanings."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 32 - IDIOMS AND PHRASES
+    // =================================================
+
+    "Idioms and Phrases": [
+
+        [
+            "Definition",
+            "An idiom's meaning differs from the literal meaning of its words."
+        ],
+
+        [
+            "Don't Be Literal",
+            "'Raining cats and dogs' = heavy rain, not actual animals."
+        ],
+
+        [
+            "Context Helps",
+            "The sentence context often reveals the idiom's meaning."
+        ],
+
+        [
+            "Common Idioms",
+            "'Break the ice' = start conversation, 'Piece of cake' = very easy."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 33 - CHANGE OF VOICE
+    // =================================================
+
+    "Change of Voice": [
+
+        [
+            "Active → Passive",
+            "Object → Subject, Verb → be + V3, Subject → by + agent."
+        ],
+
+        [
+            "Present Tense",
+            "Active: does/do + V1 → Passive: is/am/are + V3."
+        ],
+
+        [
+            "Past Tense",
+            "Active: did + V1 → Passive: was/were + V3."
+        ],
+
+        [
+            "Modal Verbs",
+            "modal + V1 → modal + be + V3. Example: 'can solve' → 'can be solved'."
+        ],
+
+        [
+            "Imperative",
+            "'Close the door' → 'Let the door be closed'."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 34 - CHANGE OF SPEECH
+    // =================================================
+
+    "Change of Speech": [
+
+        [
+            "Tense Shift",
+            "Present → Past, Past → Past Perfect, Will → Would."
+        ],
+
+        [
+            "Pronoun Changes",
+            "1st person → matches reporting subject. 2nd person → matches object."
+        ],
+
+        [
+            "Time/Place Changes",
+            "'today' → 'that day', 'here' → 'there', 'now' → 'then', 'this' → 'that'."
+        ],
+
+        [
+            "Questions",
+            "Yes/No → 'if/whether'. Wh-questions keep the question word. No inversion."
+        ],
+
+        [
+            "Commands",
+            "Use 'to + verb': 'Sit down' → 'He told me to sit down'."
+        ]
+
+    ],
+
+
+    // =================================================
+    // 35 - VERBAL ANALOGIES
+    // =================================================
+
+    "Verbal Analogies": [
+
+        [
+            "Format",
+            "A : B :: C : D — A is to B as C is to D."
+        ],
+
+        [
+            "Common Relationships",
+            "Synonym, Antonym, Part-Whole, Cause-Effect, Worker-Tool, Degree."
+        ],
+
+        [
+            "Order Matters",
+            "The direction of relationship must match: tool→worker, not worker→tool."
+        ],
+
+        [
+            "Strategy",
+            "Form a sentence with the given pair, then find the matching pair."
+        ]
+
     ]
 
 };
@@ -839,7 +1415,121 @@ if (formulaToggle && formulaContent) {
 
 
 // =====================================================
-// SORT QUESTIONS BY DIFFICULTY
+// FISHER-YATES SHUFFLE
+// =====================================================
+
+function fisherYatesShuffle(array) {
+
+    const shuffled = array.slice();
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+
+        const j = Math.floor(
+            Math.random() * (i + 1)
+        );
+
+        const temp = shuffled[i];
+        shuffled[i] = shuffled[j];
+        shuffled[j] = temp;
+
+    }
+
+    return shuffled;
+
+}
+
+
+// =====================================================
+// FULL QUESTION POOL (stored for re-selection)
+// =====================================================
+
+let allQuestionsPool = [];
+
+
+// =====================================================
+// SELECT AND SHUFFLE QUESTIONS
+// =====================================================
+//
+// Groups questions by 5 difficulty levels.
+// Randomly picks 5 from each level.
+// Returns 25 questions ordered Easy → Interview.
+//
+// =====================================================
+
+function selectAndShuffleQuestions(pool) {
+
+    // -------------------------------------------------
+    // Difficulty levels in order
+    // -------------------------------------------------
+
+    const levels = [
+        "easy",
+        "medium",
+        "hard",
+        "advanced",
+        "interview"
+    ];
+
+
+    // -------------------------------------------------
+    // Group questions by difficulty
+    // -------------------------------------------------
+
+    const groups = {};
+
+    levels.forEach(function(level) {
+        groups[level] = [];
+    });
+
+
+    pool.forEach(function(q) {
+
+        const diff = String(q.difficulty || "easy")
+            .trim()
+            .toLowerCase();
+
+        if (groups[diff]) {
+            groups[diff].push(q);
+        } else {
+            // Unknown difficulty — put in easy
+            groups["easy"].push(q);
+        }
+
+    });
+
+
+    // -------------------------------------------------
+    // Pick 5 random questions from each level
+    // -------------------------------------------------
+
+    const selected = [];
+
+    levels.forEach(function(level) {
+
+        const shuffled = fisherYatesShuffle(
+            groups[level]
+        );
+
+        const picked = shuffled.slice(0, 5);
+
+        selected.push.apply(selected, picked);
+
+    });
+
+
+    console.log(
+        "Selected " + selected.length +
+        " questions from pool of " + pool.length
+    );
+
+
+    return selected;
+
+}
+
+
+// =====================================================
+// SORT QUESTIONS BY DIFFICULTY (backward compat)
 // =====================================================
 
 function sortQuestionsByDifficulty(list) {
@@ -848,7 +1538,9 @@ function sortQuestionsByDifficulty(list) {
 
         easy: 1,
         medium: 2,
-        hard: 3
+        hard: 3,
+        advanced: 4,
+        interview: 5
 
     };
 
@@ -1139,15 +1831,15 @@ async function loadQuestions() {
 
 
         // ---------------------------------------------
-        // Store questions
+        // Store full pool for re-selection
         // ---------------------------------------------
 
-        questions = data;
+        allQuestionsPool = data;
 
 
         console.log(
-            "Questions received:",
-            questions.length
+            "Questions pool received:",
+            allQuestionsPool.length
         );
 
 
@@ -1155,7 +1847,7 @@ async function loadQuestions() {
         // No questions
         // ---------------------------------------------
 
-        if (questions.length === 0) {
+        if (allQuestionsPool.length === 0) {
 
             throw new Error(
                 "No questions found for " +
@@ -1167,16 +1859,17 @@ async function loadQuestions() {
 
 
         // ---------------------------------------------
-        // Sort questions
+        // Select 25 random questions (5 per level)
         // ---------------------------------------------
 
-        sortQuestionsByDifficulty(
-            questions
+        questions = selectAndShuffleQuestions(
+            allQuestionsPool
         );
 
 
         console.log(
-            "Questions sorted Easy → Medium → Hard"
+            "Quiz ready: " + questions.length +
+            " questions (Easy→Interview)"
         );
 
 
@@ -2090,10 +2783,10 @@ function restartQuiz() {
     }
 
 
-    // Sort again
+    // Re-select fresh questions from pool
 
-    sortQuestionsByDifficulty(
-        questions
+    questions = selectAndShuffleQuestions(
+        allQuestionsPool
     );
 
 

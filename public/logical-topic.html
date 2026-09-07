@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AptiAce - Logical Reasoning Topic</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* =============================================
+           HEADER
+        ============================================= */
+
+        .header {
+            background: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* =============================================
+           MAIN CONTAINER
+        ============================================= */
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        /* =============================================
+           SECTION CARDS
+        ============================================= */
+
+        .section-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .section-card h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-card p {
+            line-height: 1.7;
+            color: #334155;
+            font-size: 16px;
+        }
+
+        /* =============================================
+           RULES / CONCEPTS
+        ============================================= */
+
+        .rule-item {
+            border-left: 4px solid #2563eb;
+            padding: 12px 18px;
+            margin-bottom: 15px;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .rule-name {
+            font-weight: bold;
+            font-size: 16px;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .rule-description {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* =============================================
+           TIPS & TRICKS
+        ============================================= */
+
+        .tip-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tip-list li {
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            background: #eff6ff;
+            border-radius: 8px;
+            color: #1e40af;
+            font-size: 15px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .tip-list li::before {
+            content: "💡";
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* =============================================
+           DIFFICULTY BREAKDOWN
+        ============================================= */
+
+        .difficulty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .difficulty-box {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .difficulty-box h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .difficulty-box p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* =============================================
+           START BUTTON
+        ============================================= */
+
+        .start-container {
+            text-align: center;
+            margin-top: 35px;
+            margin-bottom: 50px;
+        }
+
+        .start-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 19px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+            transition: 0.25s;
+        }
+
+        .start-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+        }
+
+        .loading-text {
+            text-align: center;
+            font-size: 18px;
+            color: #64748b;
+            padding: 60px 0;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="logo">
+        AptiAce
+    </div>
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ← Back to Topics
+
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     CONTENT CONTAINER
+===================================================== -->
+
+<main class="container">
+
+    <div id="content">
+
+        <p class="loading-text" id="loadingText">
+            Loading topic information...
+        </p>
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     TOPIC DATA
+===================================================== -->
+
+<script src="js/logical-topics.js"></script>
+
+
+<!-- =====================================================
+     PAGE LOGIC
+===================================================== -->
+
+<script>
+
+// =====================================================
+// GET TOPIC FROM URL
+// =====================================================
+
+const urlParams = new URLSearchParams(window.location.search);
+
+const topicName = urlParams.get("topic");
+
+console.log("Logical topic:", topicName);
+
+
+// =====================================================
+// LOAD TOPIC DATA
+// =====================================================
+
+function loadTopic() {
+
+    const container = document.getElementById("content");
+    const loadingText = document.getElementById("loadingText");
+
+
+    // -------------------------------------------------
+    // No topic specified
+    // -------------------------------------------------
+
+    if (!topicName) {
+
+        loadingText.textContent =
+            "No topic specified. Please go back and select a topic.";
+
+        return;
+    }
+
+
+    // -------------------------------------------------
+    // Find topic data
+    // -------------------------------------------------
+
+    const topicData = logicalTopics[topicName];
+
+    if (!topicData) {
+
+        loadingText.textContent =
+            "Topic not found: " + topicName;
+
+        return;
+    }
+
+
+    // -------------------------------------------------
+    // Update page title
+    // -------------------------------------------------
+
+    document.title = "AptiAce - " + topicName;
+
+
+    // -------------------------------------------------
+    // Build HTML
+    // -------------------------------------------------
+
+    let html = "";
+
+
+    // Title & Subtitle
+    html += '<h1 class="title">' + topicName + '</h1>';
+    html += '<p class="subtitle">Review core concepts, underlying patterns, and solving shortcuts before starting the practice test.</p>';
+
+
+    // -------------------------------------------------
+    // INTRODUCTION
+    // -------------------------------------------------
+
+    html += '<div class="section-card">';
+    html += '<h2>📖 Introduction</h2>';
+    html += '<p>' + topicData.intro + '</p>';
+    html += '</div>';
+
+
+    // -------------------------------------------------
+    // KEY RULES / CONCEPTS
+    // -------------------------------------------------
+
+    if (topicData.rules && topicData.rules.length > 0) {
+
+        html += '<div class="section-card">';
+        html += '<h2>📋 Key Rules & Concepts</h2>';
+
+        topicData.rules.forEach(function(rule) {
+
+            html += '<div class="rule-item">';
+            html += '<div class="rule-name">' + rule.name + '</div>';
+            html += '<div class="rule-description">' + rule.description + '</div>';
+            html += '</div>';
+
+        });
+
+        html += '</div>';
+    }
+
+
+    // -------------------------------------------------
+    // TIPS & TRICKS
+    // -------------------------------------------------
+
+    if (topicData.tips && topicData.tips.length > 0) {
+
+        html += '<div class="section-card">';
+        html += '<h2>🎯 Tips & Shortcuts</h2>';
+        html += '<ul class="tip-list">';
+
+        topicData.tips.forEach(function(tip) {
+
+            html += '<li>' + tip + '</li>';
+
+        });
+
+        html += '</ul>';
+        html += '</div>';
+    }
+
+
+    // -------------------------------------------------
+    // PRACTICE STRUCTURE
+    // -------------------------------------------------
+
+    html += '<div class="section-card">';
+    html += '<h2>📊 Practice Test Structure</h2>';
+    html += '<p>You will solve 25 curated questions. The difficulty escalates systematically after every 5 questions to prepare you for real placement tests.</p>';
+
+    html += '<div class="difficulty-grid">';
+
+    html += '<div class="difficulty-box"><h3>🟢 Easy</h3><p>Questions 1–5</p></div>';
+    html += '<div class="difficulty-box"><h3>🟡 Medium</h3><p>Questions 6–10</p></div>';
+    html += '<div class="difficulty-box"><h3>🟠 Hard</h3><p>Questions 11–15</p></div>';
+    html += '<div class="difficulty-box"><h3>🔴 Advanced</h3><p>Questions 16–20</p></div>';
+    html += '<div class="difficulty-box"><h3>🔥 Interview</h3><p>Questions 21–25</p></div>';
+
+    html += '</div>';
+    html += '</div>';
+
+
+    // -------------------------------------------------
+    // START QUIZ BUTTON
+    // -------------------------------------------------
+
+    html += '<div class="start-container">';
+    html += '<button class="start-btn" onclick="startQuiz()">';
+    html += 'Start 25 Question Practice →';
+    html += '</button>';
+    html += '</div>';
+
+
+    // -------------------------------------------------
+    // Render
+    // -------------------------------------------------
+
+    container.innerHTML = html;
+
+}
+
+
+// =====================================================
+// START QUIZ
+// =====================================================
+
+function startQuiz() {
+
+    console.log("Starting quiz for:", topicName);
+
+    window.location.href =
+        "quiz.html?topic=" +
+        encodeURIComponent(topicName);
+
+}
+
+
+// =====================================================
+// BACK NAVIGATION
+// =====================================================
+
+function goBack() {
+
+    window.location.href = "logical.html";
+
+}
+
+
+// =====================================================
+// INIT
+// =====================================================
+
+loadTopic();
+
+</script>
+
+
+</body>
+
+</html>

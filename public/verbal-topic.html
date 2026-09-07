@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AptiAce - Verbal Topic</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+
+        /* =============================================
+           HEADER
+        ============================================= */
+
+        .header {
+            background: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .back-btn:hover {
+            background: #047857;
+        }
+
+
+        /* =============================================
+           MAIN CONTAINER
+        ============================================= */
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+
+        /* =============================================
+           SECTION CARDS
+        ============================================= */
+
+        .section-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .section-card h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #059669;
+            font-size: 24px;
+        }
+
+        .section-card p {
+            line-height: 1.8;
+            color: #444;
+            font-size: 16px;
+        }
+
+
+        /* =============================================
+           RULES
+        ============================================= */
+
+        .rule-item {
+            background: #f0fdf4;
+            padding: 18px;
+            margin: 12px 0;
+            border-left: 4px solid #059669;
+            border-radius: 8px;
+        }
+
+        .rule-name {
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+
+        .rule-description {
+            color: #555;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+
+        /* =============================================
+           TIPS
+        ============================================= */
+
+        .tip-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tip-list li {
+            padding: 14px 18px;
+            margin: 10px 0;
+            background: #fefce8;
+            border-left: 4px solid #eab308;
+            border-radius: 8px;
+            line-height: 1.6;
+            font-size: 15px;
+            color: #444;
+        }
+
+        .tip-list li::before {
+            content: "💡 ";
+        }
+
+
+        /* =============================================
+           DIFFICULTY GRID
+        ============================================= */
+
+        .difficulty-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .difficulty-box {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+        }
+
+        .difficulty-box h3 {
+            margin: 0 0 8px 0;
+            font-size: 16px;
+        }
+
+        .difficulty-box p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+
+        /* =============================================
+           START BUTTON
+        ============================================= */
+
+        .start-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .start-btn {
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .start-btn:hover {
+            background: #047857;
+            transform: translateY(-2px);
+        }
+
+
+        /* =============================================
+           LOADING
+        ============================================= */
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            font-size: 20px;
+            color: #999;
+        }
+
+
+        /* =============================================
+           MOBILE
+        ============================================= */
+
+        @media (max-width: 700px) {
+
+            .difficulty-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 25px;
+            }
+
+            .title {
+                font-size: 30px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="logo">
+        AptiAce
+    </div>
+
+    <button
+        class="back-btn"
+        onclick="window.location.href='verbal.html'">
+
+        ← Topics
+
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="container" id="content">
+
+    <div class="loading" id="loadingText">
+        Loading topic...
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     VERBAL TOPICS DATA
+===================================================== -->
+
+<script src="js/verbal-topics.js"></script>
+
+
+<!-- =====================================================
+     PAGE LOGIC
+===================================================== -->
+
+<script>
+
+// =====================================================
+// GET TOPIC FROM URL
+// =====================================================
+
+const urlParams = new URLSearchParams(window.location.search);
+
+const topicName = urlParams.get("topic");
+
+console.log("Verbal topic:", topicName);
+
+
+// =====================================================
+// LOAD TOPIC DATA
+// =====================================================
+
+function loadTopic() {
+
+    const container = document.getElementById("content");
+    const loadingText = document.getElementById("loadingText");
+
+
+    // -------------------------------------------------
+    // No topic specified
+    // -------------------------------------------------
+
+    if (!topicName) {
+
+        loadingText.textContent =
+            "No topic specified. Please go back and select a topic.";
+
+        return;
+    }
+
+
+    // -------------------------------------------------
+    // Find topic data
+    // -------------------------------------------------
+
+    const topicData = verbalTopics[topicName];
+
+    if (!topicData) {
+
+        loadingText.textContent =
+            "Topic not found: " + topicName;
+
+        return;
+    }
+
+
+    // -------------------------------------------------
+    // Update page title
+    // -------------------------------------------------
+
+    document.title = "AptiAce - " + topicName;
+
+
+    // -------------------------------------------------
+    // Build HTML
+    // -------------------------------------------------
+
+    let html = "";
+
+
+    // Title
+    html += '<h1 class="title">' + topicName + '</h1>';
+
+    html += '<p class="subtitle">Learn the key concepts and tips before starting your practice.</p>';
+
+
+    // -------------------------------------------------
+    // INTRODUCTION
+    // -------------------------------------------------
+
+    html += '<div class="section-card">';
+    html += '<h2>📖 Introduction</h2>';
+    html += '<p>' + topicData.intro + '</p>';
+    html += '</div>';
+
+
+    // -------------------------------------------------
+    // KEY RULES / CONCEPTS
+    // -------------------------------------------------
+
+    if (topicData.rules && topicData.rules.length > 0) {
+
+        html += '<div class="section-card">';
+        html += '<h2>📋 Key Rules & Concepts</h2>';
+
+        topicData.rules.forEach(function(rule) {
+
+            html += '<div class="rule-item">';
+            html += '<div class="rule-name">' + rule.name + '</div>';
+            html += '<div class="rule-description">' + rule.description + '</div>';
+            html += '</div>';
+
+        });
+
+        html += '</div>';
+    }
+
+
+    // -------------------------------------------------
+    // TIPS & TRICKS
+    // -------------------------------------------------
+
+    if (topicData.tips && topicData.tips.length > 0) {
+
+        html += '<div class="section-card">';
+        html += '<h2>🎯 Tips & Tricks</h2>';
+        html += '<ul class="tip-list">';
+
+        topicData.tips.forEach(function(tip) {
+
+            html += '<li>' + tip + '</li>';
+
+        });
+
+        html += '</ul>';
+        html += '</div>';
+    }
+
+
+    // -------------------------------------------------
+    // PRACTICE STRUCTURE
+    // -------------------------------------------------
+
+    html += '<div class="section-card">';
+    html += '<h2>📊 Practice Structure</h2>';
+    html += '<p>You will get 25 questions. The difficulty increases after every 5 questions.</p>';
+
+    html += '<div class="difficulty-grid">';
+
+    html += '<div class="difficulty-box"><h3>🟢 Easy</h3><p>Questions 1–5</p></div>';
+    html += '<div class="difficulty-box"><h3>🟡 Medium</h3><p>Questions 6–10</p></div>';
+    html += '<div class="difficulty-box"><h3>🟠 Hard</h3><p>Questions 11–15</p></div>';
+    html += '<div class="difficulty-box"><h3>🔴 Advanced</h3><p>Questions 16–20</p></div>';
+    html += '<div class="difficulty-box"><h3>🔥 Interview</h3><p>Questions 21–25</p></div>';
+
+    html += '</div>';
+    html += '</div>';
+
+
+    // -------------------------------------------------
+    // START QUIZ BUTTON
+    // -------------------------------------------------
+
+    html += '<div class="start-container">';
+    html += '<button class="start-btn" onclick="startQuiz()">';
+    html += 'Start 25 Question Practice →';
+    html += '</button>';
+    html += '</div>';
+
+
+    // -------------------------------------------------
+    // Render
+    // -------------------------------------------------
+
+    container.innerHTML = html;
+
+}
+
+
+// =====================================================
+// START QUIZ
+// =====================================================
+
+function startQuiz() {
+
+    console.log("Starting quiz for:", topicName);
+
+    window.location.href =
+        "quiz.html?topic=" +
+        encodeURIComponent(topicName);
+
+}
+
+
+// =====================================================
+// INIT
+// =====================================================
+
+loadTopic();
+
+</script>
+
+
+</body>
+
+</html>

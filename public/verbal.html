@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AptiAce - Verbal Ability</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .back-btn:hover {
+            background: #3730a3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 38px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .topics {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .topic-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.2s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .topic-number {
+            color: #059669;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .topic-card h2 {
+            margin: 10px 0;
+        }
+
+        .topic-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .practice-btn {
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .practice-btn:hover {
+            background: #047857;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="logo">
+        AptiAce
+    </div>
+
+    <button
+        class="back-btn"
+        onclick="goBack()">
+
+        ← Back
+
+    </button>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="container">
+
+    <h1 class="title">
+        Verbal Ability
+    </h1>
+
+    <p class="subtitle">
+        Master grammar, vocabulary and comprehension
+        skills tested in placement and interview exams.
+    </p>
+
+
+    <div class="topics">
+
+
+        <!-- =================================================
+             TOPIC 01
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 01
+            </div>
+
+            <h2>
+                Spotting Errors
+            </h2>
+
+            <p>
+                Identify grammatical errors in
+                sentences involving subject-verb
+                agreement, tense, articles and more.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Spotting Errors')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 02
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 02
+            </div>
+
+            <h2>
+                Synonyms
+            </h2>
+
+            <p>
+                Find words with similar meanings.
+                Build your vocabulary with commonly
+                tested synonym pairs.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Synonyms')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 03
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 03
+            </div>
+
+            <h2>
+                Antonyms
+            </h2>
+
+            <p>
+                Find words with opposite meanings.
+                Practice common antonym pairs asked
+                in competitive exams.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Antonyms')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 04
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 04
+            </div>
+
+            <h2>
+                Selecting Words
+            </h2>
+
+            <p>
+                Choose the most appropriate word
+                to complete sentences based on
+                context and meaning.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Selecting Words')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 05
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 05
+            </div>
+
+            <h2>
+                Spellings
+            </h2>
+
+            <p>
+                Identify correctly and incorrectly
+                spelled words. Master commonly
+                misspelled English words.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Spellings')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 06
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 06
+            </div>
+
+            <h2>
+                Sentence Formation
+            </h2>
+
+            <p>
+                Arrange given words to form
+                grammatically correct and
+                meaningful sentences.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Sentence Formation')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 07
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 07
+            </div>
+
+            <h2>
+                Ordering of Words
+            </h2>
+
+            <p>
+                Rearrange jumbled words in the
+                correct order to form a meaningful
+                sentence.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Ordering of Words')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 08
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 08
+            </div>
+
+            <h2>
+                Sentence Correction
+            </h2>
+
+            <p>
+                Find and fix grammatical errors
+                in sentences. Focus on common
+                mistakes in English usage.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Sentence Correction')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 09
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 09
+            </div>
+
+            <h2>
+                Sentence Improvement
+            </h2>
+
+            <p>
+                Replace underlined parts with
+                better alternatives to improve
+                sentence clarity and grammar.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Sentence Improvement')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 10
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 10
+            </div>
+
+            <h2>
+                Completing Statements
+            </h2>
+
+            <p>
+                Choose the best option to
+                complete incomplete sentences
+                logically and grammatically.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Completing Statements')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 11
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 11
+            </div>
+
+            <h2>
+                Ordering of Sentences
+            </h2>
+
+            <p>
+                Arrange jumbled sentences in the
+                correct sequence to form a
+                coherent paragraph.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Ordering of Sentences')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 12
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 12
+            </div>
+
+            <h2>
+                Paragraph Formation
+            </h2>
+
+            <p>
+                Arrange sentences to form a
+                well-structured and logically
+                flowing paragraph.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Paragraph Formation')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 13
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 13
+            </div>
+
+            <h2>
+                Cloze Test
+            </h2>
+
+            <p>
+                Fill in the blanks in a passage
+                with the most suitable words
+                from given options.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Cloze Test')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 14
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 14
+            </div>
+
+            <h2>
+                Comprehension
+            </h2>
+
+            <p>
+                Read passages carefully and answer
+                questions based on facts, inferences
+                and tone.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Comprehension')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 15
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 15
+            </div>
+
+            <h2>
+                One Word Substitutes
+            </h2>
+
+            <p>
+                Replace a phrase or sentence
+                with a single word that conveys
+                the same meaning.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('One Word Substitutes')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 16
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 16
+            </div>
+
+            <h2>
+                Idioms and Phrases
+            </h2>
+
+            <p>
+                Learn the meanings of common
+                English idioms and phrases used
+                in everyday language.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Idioms and Phrases')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 17
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 17
+            </div>
+
+            <h2>
+                Change of Voice
+            </h2>
+
+            <p>
+                Convert sentences from active
+                voice to passive voice and
+                vice versa.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Change of Voice')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 18
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 18
+            </div>
+
+            <h2>
+                Change of Speech
+            </h2>
+
+            <p>
+                Convert sentences from direct
+                speech to indirect speech and
+                vice versa.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Change of Speech')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPIC 19
+        ================================================== -->
+
+        <div class="topic-card">
+
+            <div class="topic-number">
+                TOPIC 19
+            </div>
+
+            <h2>
+                Verbal Analogies
+            </h2>
+
+            <p>
+                Identify relationships between
+                word pairs and find matching
+                analogies.
+            </p>
+
+            <button
+                class="practice-btn"
+                onclick="openTopic('Verbal Analogies')">
+
+                Learn & Practice
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<script>
+
+function openTopic(topic) {
+
+    console.log("Opening topic:", topic);
+
+    window.location.href =
+        "verbal-topic.html?topic=" +
+        encodeURIComponent(topic);
+
+}
+
+
+function goBack() {
+
+    window.location.href = "main.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
