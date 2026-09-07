@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 60" width="260" height="60">
+  <defs>
+    <!-- Vibrant fiery gradient matching the reference logo -->
+    <linearGradient id="flameOuter" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D91B5C"/>
+      <stop offset="45%" stop-color="#FF3E00"/>
+      <stop offset="100%" stop-color="#FFA800"/>
+    </linearGradient>
+    <linearGradient id="flameInner" x1="0%" y1="100%" x2="70%" y2="0%">
+      <stop offset="0%" stop-color="#FF3E00"/>
+      <stop offset="100%" stop-color="#FFC700"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#FF3E00" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Cool Emblem: Modern Flame / Ace Sprout / Launch Spark -->
+  <g transform="translate(4, 4)" filter="url(#glow)">
+    <!-- Outer curving wing/petal -->
+    <path d="M 26,4 C 14,8 4,22 8,36 C 11,46 22,52 32,50 C 44,48 50,34 46,20 C 42,6 30,4 26,4 Z" 
+          fill="url(#flameOuter)" />
+    <!-- Inner dynamic leaf/flame cut creating SeedProd-like dimension -->
+    <path d="M 28,10 C 20,15 15,25 18,34 C 20,40 26,44 32,43 C 39,41 42,32 39,22 C 36,12 30,10 28,10 Z" 
+          fill="#FFFFFF" />
+    <!-- Center energetic spark flame -->
+    <path d="M 28,15 C 22,20 19,28 22,34 C 23,37 27,40 30,39 C 34,38 36,31 34,24 C 32,17 29,15 28,15 Z" 
+          fill="url(#flameInner)" />
+  </g>
+
+  <!-- Typography: AptiAce -->
+  <!-- "Apti" in bold dark graphite -->
+  <text x="64" y="38" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="31" font-weight="800" fill="#0F172A" letter-spacing="-0.5">Apti</text>
+  <!-- "Ace" in modern medium/bold with flame accent -->
+  <text x="133" y="38" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="31" font-weight="500" fill="#0F172A" letter-spacing="-0.5">Ace</text>
+  
+  <!-- Subtle accent dot / spark above Ace -->
+  <circle cx="196" cy="18" r="3.5" fill="#FF3E00" />
+</svg>

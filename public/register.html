@@ -2,75 +2,682 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Create Account - AptiAce</title>
+    
+    <!-- Modern Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* =============================================
+           MAIN SPLIT CONTAINER
+        ============================================= */
+
+        .auth-split-wrapper {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* =============================================
+           LEFT COLUMN - FORM
+        ============================================= */
+
+        .auth-form-side {
+            width: 44%;
+            min-width: 420px;
+            max-width: 580px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 60px;
+            box-shadow: 10px 0 35px rgba(0, 0, 0, 0.03);
+            z-index: 10;
+        }
+
+        .auth-form-content {
+            margin: auto 0;
+            width: 100%;
+            max-width: 380px;
+            align-self: center;
+        }
+
+        /* Brand Logo */
+        .brand-header {
+            margin-bottom: 24px;
+        }
+
+        .brand-logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+
+        /* Headings */
+        .auth-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .auth-subtitle {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 26px;
+            font-weight: 500;
+        }
+
+        .highlight-link {
+            color: #f95721;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+
+        .highlight-link:hover {
+            color: #d8410e;
+        }
+
+        /* Form Controls */
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 12px 42px 12px 14px;
+            font-size: 15px;
+            font-family: inherit;
+            color: #0f172a;
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: #f95721;
+            box-shadow: 0 0 0 3px rgba(249, 87, 33, 0.15);
+        }
+
+        .input-wrapper input::placeholder {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .input-icon-btn {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            transition: color 0.2s;
+        }
+
+        .input-icon-btn:hover {
+            color: #475569;
+        }
+
+        /* Submit Button */
+        .auth-submit-btn {
+            background: #f95721;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 14px rgba(249, 87, 33, 0.35);
+            margin-top: 6px;
+        }
+
+        .auth-submit-btn:hover {
+            background: #e2430d;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(249, 87, 33, 0.45);
+        }
+
+        .auth-submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Message feedback */
+        .auth-message {
+            margin-top: 14px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            min-height: 20px;
+        }
+
+        .auth-message.error {
+            color: #dc2626;
+        }
+
+        .auth-message.success {
+            color: #16a34a;
+        }
+
+        /* Footer */
+        .auth-footer {
+            margin-top: 30px;
+            font-size: 11.5px;
+            color: #94a3b8;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .auth-footer a {
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .auth-footer a:hover {
+            color: #f95721;
+            text-decoration: underline;
+        }
+
+        /* =============================================
+           RIGHT COLUMN - VISUAL & QUOTE BANNER
+        ============================================= */
+
+        .auth-visual-side {
+            flex: 1;
+            position: relative;
+            background-color: #0b0f24;
+            background-image: url('images/rocket_launch.jpg');
+            background-size: cover;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        .auth-visual-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(11, 15, 36, 0.4) 0%, rgba(11, 15, 36, 0.05) 50%, rgba(11, 15, 36, 0.6) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Dynamic Quotes Floating Card */
+        .quote-showcase-container {
+            position: relative;
+            z-index: 3;
+            max-width: 480px;
+            margin-left: auto;
+            margin-top: 20px;
+        }
+
+        .quote-glass-card {
+            background: rgba(15, 23, 42, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 18px;
+            padding: 26px 30px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+            transition: all 0.3s ease;
+        }
+
+        .quote-icon {
+            font-size: 32px;
+            color: #f95721;
+            line-height: 1;
+            font-family: Georgia, serif;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .quote-text-wrapper {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quote-text {
+            font-size: 16.5px;
+            font-style: italic;
+            font-weight: 500;
+            color: #f1f5f9;
+            line-height: 1.6;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .quote-nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quote-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .quote-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .quote-dot.active {
+            background: #f95721;
+            width: 22px;
+            border-radius: 4px;
+        }
+
+        .quote-arrows {
+            display: flex;
+            gap: 8px;
+        }
+
+        .quote-arrow-btn {
+            background: rgba(255, 255, 255, 0.12);
+            border: none;
+            color: #f8fafc;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+
+        .quote-arrow-btn:hover {
+            background: rgba(249, 87, 33, 0.8);
+        }
+
+        .bottom-quote-pill {
+            position: relative;
+            z-index: 3;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 30px;
+            padding: 10px 22px;
+            align-self: flex-start;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 520px;
+        }
+
+        .pill-flame {
+            color: #f95721;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .pill-quote {
+            color: #e2e8f0;
+            font-size: 13px;
+            font-weight: 500;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 960px) {
+            .auth-split-wrapper {
+                flex-direction: column;
+            }
+
+            .auth-form-side {
+                width: 100%;
+                min-width: unset;
+                max-width: 100%;
+                padding: 40px 30px;
+                box-shadow: none;
+            }
+
+            .auth-visual-side {
+                min-height: 380px;
+                padding: 30px 20px;
+            }
+
+            .quote-showcase-container {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .bottom-quote-pill {
+                display: none;
+            }
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-    <div class="auth-container">
+    <div class="auth-split-wrapper">
 
-        <div class="auth-card">
+        <!-- =============================================
+             LEFT SIDE: REGISTRATION FORM
+        ============================================= -->
 
-            <h1>AptiAce</h1>
+        <div class="auth-form-side">
 
-            <p class="subtitle">
-                Start preparing for your interviews
-            </p>
+            <div class="top-spacer"></div>
 
-            <h2>Create Account</h2>
+            <div class="auth-form-content">
 
-            <form id="registerForm">
+                <!-- Brand Logo -->
+                <div class="brand-header">
+                    <img src="images/aptiace-logo.svg" alt="AptiAce Logo" class="brand-logo-img">
+                </div>
 
-                <label>Gmail ID</label>
+                <!-- Title & Subtitle -->
+                <h1 class="auth-title">Create Account</h1>
+                <p class="auth-subtitle">
+                    Already have an account? <a href="login.html" class="highlight-link">Log In</a>
+                </p>
 
-                <input
-                    type="email"
-                    id="registerEmail"
-                    placeholder="example@gmail.com"
-                    required
-                >
+                <!-- Registration Form -->
+                <form id="registerForm" class="auth-form" autocomplete="on">
 
-                <label>Password</label>
+                    <!-- Email Address -->
+                    <div class="form-group">
+                        <label for="registerEmail">Gmail / Email Address</label>
+                        <div class="input-wrapper">
+                            <input
+                                type="email"
+                                id="registerEmail"
+                                name="email"
+                                placeholder="example@gmail.com"
+                                required
+                                autocomplete="email"
+                            >
+                            <span class="input-icon-btn" title="Email" tabindex="-1">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
 
-                <input
-                    type="password"
-                    id="registerPassword"
-                    placeholder="Create a password"
-                    required
-                >
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <div class="input-wrapper">
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                name="password"
+                                placeholder="Create a password"
+                                required
+                                autocomplete="new-password"
+                            >
+                            <button
+                                type="button"
+                                class="input-icon-btn"
+                                onclick="toggleVisibility('registerPassword', this)"
+                                aria-label="Toggle password"
+                            >
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
-                <label>Confirm Password</label>
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Confirm your password"
+                                required
+                                autocomplete="new-password"
+                            >
+                            <button
+                                type="button"
+                                class="input-icon-btn"
+                                onclick="toggleVisibility('confirmPassword', this)"
+                                aria-label="Toggle password"
+                            >
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="Confirm your password"
-                    required
-                >
+                    <!-- Submit Button -->
+                    <button type="submit" class="auth-submit-btn" id="registerSubmitBtn">
+                        Create Account
+                    </button>
 
-                <button type="submit">
-                    Create Account
-                </button>
+                </form>
 
-            </form>
+                <!-- Feedback Message -->
+                <p id="registerMessage" class="auth-message"></p>
 
-            <p id="registerMessage"></p>
+            </div>
 
-            <p class="switch-page">
-                Already have an account?
-                <a href="login.html">Login</a>
-            </p>
+            <!-- Footer -->
+            <footer class="auth-footer">
+                <p>Copyright &copy; 2026 AptiAce, LLC. AptiAce&trade; is a trademark of AptiAce, LLC.</p>
+                <p style="margin-top: 4px;">
+                    <a href="javascript:void(0)">Terms of Service</a> &nbsp;|&nbsp; <a href="javascript:void(0)">Privacy Policy</a>
+                </p>
+            </footer>
+
+        </div>
+
+
+        <!-- =============================================
+             RIGHT SIDE: VISUAL ARTWORK & QUOTES
+        ============================================= -->
+
+        <div class="auth-visual-side">
+
+            <!-- Top Space: Glassmorphism Quote Carousel -->
+            <div class="quote-showcase-container">
+                <div class="quote-glass-card">
+                    <span class="quote-icon">&ldquo;</span>
+                    <div class="quote-text-wrapper">
+                        <p id="quoteText" class="quote-text">
+                            "Relying on others won't get you to the top."
+                        </p>
+                    </div>
+                    <div class="quote-nav-row">
+                        <div class="quote-dots" id="quoteDots">
+                            <span class="quote-dot" onclick="setQuote(0)"></span>
+                            <span class="quote-dot active" onclick="setQuote(1)"></span>
+                            <span class="quote-dot" onclick="setQuote(2)"></span>
+                            <span class="quote-dot" onclick="setQuote(3)"></span>
+                        </div>
+                        <div class="quote-arrows">
+                            <button class="quote-arrow-btn" onclick="prevQuote()" aria-label="Previous quote">&#8592;</button>
+                            <button class="quote-arrow-btn" onclick="nextQuote()" aria-label="Next quote">&#8594;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Space: Static Quote Pill in Blank Space -->
+            <div class="bottom-quote-pill">
+                <span class="pill-flame">&#10022;</span>
+                <span class="pill-quote">
+                    "It doesn't matter how it's done. It doesn't matter what needs to be sacrificed. In this world, winning is everything."
+                </span>
+            </div>
 
         </div>
 
     </div>
 
+    <!-- =============================================
+         SCRIPTS
+    ============================================= -->
+
+    <!-- Core App Logic (Register fetch) -->
     <script src="script.js"></script>
+
+    <!-- Page Specific Interactive Logic -->
+    <script>
+
+        // Quotes List (Strictly without poet/author attribution)
+        const quotes = [
+            "Your shortcoming is that you assume others will hold you back, and put them at a distance from the start.",
+            "Relying on others won't get you to the top.",
+            "It doesn't matter how it's done. It doesn't matter what needs to be sacrificed. In this world, winning is everything.",
+            "Having power and not knowing how to use it is foolish."
+        ];
+
+        let currentQuoteIndex = 1;
+        let quoteTimer = null;
+
+        const quoteTextEl = document.getElementById("quoteText");
+        const quoteDots = document.querySelectorAll(".quote-dot");
+
+        function renderQuote(index) {
+            currentQuoteIndex = index;
+            
+            quoteTextEl.style.opacity = "0";
+            quoteTextEl.style.transform = "translateY(6px)";
+
+            setTimeout(() => {
+                quoteTextEl.textContent = `"${quotes[currentQuoteIndex]}"`;
+                quoteTextEl.style.opacity = "1";
+                quoteTextEl.style.transform = "translateY(0)";
+            }, 250);
+
+            quoteDots.forEach((dot, idx) => {
+                if (idx === currentQuoteIndex) {
+                    dot.classList.add("active");
+                } else {
+                    dot.classList.remove("active");
+                }
+            });
+        }
+
+        function setQuote(index) {
+            renderQuote(index);
+            restartTimer();
+        }
+
+        function nextQuote() {
+            const nextIdx = (currentQuoteIndex + 1) % quotes.length;
+            renderQuote(nextIdx);
+            restartTimer();
+        }
+
+        function prevQuote() {
+            const prevIdx = (currentQuoteIndex - 1 + quotes.length) % quotes.length;
+            renderQuote(prevIdx);
+            restartTimer();
+        }
+
+        function restartTimer() {
+            clearInterval(quoteTimer);
+            quoteTimer = setInterval(nextQuote, 6000);
+        }
+
+        restartTimer();
+
+        function toggleVisibility(inputId, btnEl) {
+            const input = document.getElementById(inputId);
+            const svg = btnEl.querySelector("svg");
+
+            if (input.type === "password") {
+                input.type = "text";
+                svg.innerHTML = `
+                    <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                    <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                    <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                    <line x1="2" x2="22" y1="2" y2="22"/>
+                `;
+            } else {
+                input.type = "password";
+                svg.innerHTML = `
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                `;
+            }
+        }
+
+    </script>
 
 </body>
 
