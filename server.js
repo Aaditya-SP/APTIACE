@@ -7,16 +7,15 @@ const session = require("express-session");
 
 const app = express();
 app.use(session({
-    secret: "aptiace-secret-key",
+    secret: process.env.SESSION_SECRET || "aptiace-secret-key",
     resave: false,
     saveUninitialized: false,
     cookie: {
         maxAge: 24 * 60 * 60 * 1000
     }
 }));
-const PORT = 3000;
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const PORT = process.env.PORT || 3000;
+
 // =====================================================
 // MIDDLEWARE
 // =====================================================
@@ -217,7 +216,7 @@ app.get("/", (req, res) => {
 
 app.post("/register", async (req, res) => {
 
-    const { email, password } = req.body;
+    let { email, password } = req.body;
 
     if (!email || !password) {
 
@@ -227,6 +226,8 @@ app.post("/register", async (req, res) => {
         });
 
     }
+
+    email = email.trim().toLowerCase();
 
     console.log(
         "Registration attempt:",
@@ -318,7 +319,7 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", (req, res) => {
 
-    const email = req.body.email;
+    let email = req.body.email;
     const password = req.body.password;
 
     if (!email || !password) {
@@ -334,13 +335,15 @@ app.post("/login", (req, res) => {
 
     }
 
+    email = email.trim().toLowerCase();
+
     console.log(
         "Login attempt:",
         email
     );
 
     db.get(
-        "SELECT * FROM users WHERE email = ?",
+        "SELECT * FROM users WHERE LOWER(TRIM(email)) = ?",
         [email],
         async (err, user) => {
 
